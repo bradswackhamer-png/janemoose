@@ -1,0 +1,29 @@
+{
+  "tractor_engine": {
+    "sounds": [
+      {
+        "name": "minecraft:minecart/base",
+        "type": "event"
+      }
+    ],
+    "subtitle": "subtitles.janemoose.tractor_engine"
+  },
+  "tractor_horn": {
+    "sounds": [
+      {
+        "name": "minecraft:item/goat_horn/sound0",
+        "type": "event"
+      }
+    ],
+    "subtitle": "subtitles.janemoose.tractor_horn"
+  },
+  "attachment_click": {
+    "sounds": [
+      {
+        "name": "minecraft:item/armor/equip_iron",
+        "type": "event"
+      }
+    ],
+    "subtitle": "subtitles.janemoose.attachment_click"
+  }
+}

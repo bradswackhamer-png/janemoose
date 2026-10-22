@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " P ",
+    " H "
+  ],
+  "key": {
+    "P": "minecraft:oak_planks",
+    "H": "minecraft:wooden_hoe"
+  },
+  "result": {
+    "id": "janemoose:wooden_cultivator"
+  }
+}

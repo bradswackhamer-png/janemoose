@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "IEI",
+    "WIW"
+  ],
+  "key": {
+    "G": "minecraft:green_wool",
+    "I": "minecraft:iron_block",
+    "E": "minecraft:blast_furnace",
+    "W": "minecraft:coal_block"
+  },
+  "result": {
+    "id": "janemoose:tractor"
+  }
+}

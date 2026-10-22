@@ -1,0 +1,63 @@
+{
+  "itemGroup.janemoose": "Jane Moose Machinery",
+  "item.janemoose.tractor": "Jane Moose Model 4020 Tractor",
+  "item.janemoose.diesel_canister": "Diesel Canister",
+  "item.janemoose.wrench": "Jane Moose Mechanics Wrench",
+
+  "item.janemoose.wooden_cultivator": "Wooden Cultivator (1x1)",
+  "item.janemoose.iron_cultivator": "Iron Cultivator (1x2)",
+  "item.janemoose.diamond_cultivator": "Diamond Cultivator (1x3)",
+
+  "item.janemoose.wooden_harvester": "Wooden Harvester (1x1)",
+  "item.janemoose.iron_harvester": "Iron Harvester (1x2)",
+  "item.janemoose.diamond_harvester": "Diamond Harvester (1x3)",
+
+  "item.janemoose.wooden_planter": "Wooden Planter (1x1)",
+  "item.janemoose.iron_planter": "Iron Planter (1x2)",
+  "item.janemoose.diamond_planter": "Diamond Planter (1x3)",
+
+  "entity.janemoose.tractor": "Jane Moose Tractor",
+  "entity.janemoose.attachment": "Jane Moose Implement",
+
+  "key.categories.janemoose": "Jane Moose Machinery",
+  "key.category.janemoose.machinery": "Jane Moose Machinery",
+  "key.janemoose.toggle_lift": "Lift / Lower Hydraulics",
+  "key.janemoose.toggle_active": "Toggle Implement (On / Off)",
+  "key.janemoose.open_gui": "Open Tractor Dashboard",
+
+  "gui.janemoose.tractor_dashboard": "Jane Moose 4020 Dashboard",
+  "gui.janemoose.seed_hopper": "Jane Moose Seed Hopper",
+  "gui.janemoose.grain_tank": "Jane Moose Grain Tank",
+  "gui.janemoose.tool_chest": "Jane Moose Implement Storage",
+  "gui.janemoose.attachment_inventory": "Jane Moose Implement Inventory",
+
+  "message.janemoose.fueled": "Jane Moose: Refueled! Current: %s / %s mB Diesel",
+  "message.janemoose.out_of_fuel": "Engine stalled: Out of diesel! Refuel with diesel canister or bucket.",
+  "message.janemoose.attachment_attached": "Attached %s to rear hitch.",
+  "message.janemoose.attachment_removed": "Detached %s from rear hitch.",
+  "message.janemoose.hitched": "Connected %s to rear hitch!",
+  "message.janemoose.unhitched": "Unhitched implement from rear.",
+  "message.janemoose.none_hitched": "No implement hitched to rear.",
+  "message.janemoose.lowered": "Implement: §aLOWERED (Working Mode - 50% Speed)§r",
+  "message.janemoose.lifted": "Implement: §eLIFTED (Transport Mode - 100% Speed)§r",
+  "message.janemoose.active": "Implement: §aON (Running)§r",
+  "message.janemoose.inactive": "Implement: §cOFF (Stopped)§r",
+  "message.janemoose.fuel_status": "Jane Moose Diesel Tank: %s / %s mB | Rear Attachment: %s",
+  "message.janemoose.none": "None",
+
+  "tooltip.janemoose.tractor": "§aNothing runs like a moose!§r\n§eRideable farm tractor powered by diesel.\n§7Press [H] to lift/lower hydraulics.\n§7Press [X] to toggle implement On/Off.\n§7Press [C] or sneak-right-click to open Dashboard.",
+  "tooltip.janemoose.diesel_canister": "§e1,000 mB of refined diesel fuel.§r\n§7Right-click on a Jane Moose tractor to refuel.",
+  "tooltip.janemoose.wrench": "§eJane Moose Tool§r\n§7Right-click tractor to inspect or open Dashboard.\n§7Sneak-right-click to detach equipment or retrieve the tractor.",
+
+  "tooltip.janemoose.cultivator.wood": "§6Tier I Cultivator§r\nRight-click ground with item to till like a hoe (1x1).\nSneak-right-click to place as 3D tractor implement.",
+  "tooltip.janemoose.cultivator.iron": "§fTier II Cultivator§r\nRight-click ground with item to till like a hoe (1x2).\nSneak-right-click to place as 3D tractor implement.",
+  "tooltip.janemoose.cultivator.diamond": "§bTier III Cultivator§r\nRight-click ground with item to till like a hoe (1x3).\nSneak-right-click to place as 3D tractor implement.",
+
+  "tooltip.janemoose.harvester.wood": "§6Tier I Harvester§r\nRight-click mature crops with item to reap & replant.\nSneak-right-click to place as 3D tractor implement with 9-slot grain tank.",
+  "tooltip.janemoose.harvester.iron": "§fTier II Harvester§r\nRight-click mature crops with item to reap & replant.\nSneak-right-click to place as 3D tractor implement with 18-slot grain tank.",
+  "tooltip.janemoose.harvester.diamond": "§bTier III Harvester§r\nRight-click mature crops with item to reap & replant.\nSneak-right-click to place as 3D tractor implement with 27-slot grain tank.",
+
+  "tooltip.janemoose.planter.wood": "§6Tier I Planter§r\nRight-click farmland with item to sow seeds.\nSneak-right-click to place as 3D tractor implement with 9-slot seed hopper.",
+  "tooltip.janemoose.planter.iron": "§fTier II Planter§r\nRight-click farmland with item to sow seeds.\nSneak-right-click to place as 3D tractor implement with 18-slot seed hopper.",
+  "tooltip.janemoose.planter.diamond": "§bTier III Planter§r\nRight-click farmland with item to sow seeds.\nSneak-right-click to place as 3D tractor implement with 27-slot seed hopper."
+}
