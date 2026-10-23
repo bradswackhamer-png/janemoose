@@ -80,157 +80,262 @@ public class AttachmentModel extends EntityModel<AttachmentRenderState> {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        // 1. Drawbar tongue reaching forward (-Z) to tractor hitch
+        // 1. Heavy Drawbar Tongue reaching forward (-Z) to tractor 3-point hitch
         partdefinition.addOrReplaceChild("tongue",
                 CubeListBuilder.create()
-                        // Drawbar beam
+                        // Solid steel drawbar beam
                         .texOffs(0, 0)
                         .addBox(-2.0F, -4.0F, -12.0F, 4.0F, 2.0F, 12.0F)
                         // Clevis hitch ring coupler
-                        .texOffs(32, 0)
+                        .texOffs(36, 0)
                         .addBox(-1.5F, -4.5F, -14.0F, 3.0F, 3.0F, 2.0F)
-                        // Hydraulic lift cylinder
-                        .texOffs(42, 0)
+                        // Hydraulic lift cylinder & chrome ram
+                        .texOffs(48, 0)
                         .addBox(-1.0F, -7.0F, -6.0F, 2.0F, 3.0F, 6.0F),
                 PartPose.offset(0.0F, 20.0F, 0.0F));
 
-        // 2. Toolbar pivot (tilts up when lifted, down when lowered)
+        // 2. Toolbar Pivot Crossbeam (Tilts up when lifted, down when lowered)
         PartDefinition toolbar = partdefinition.addOrReplaceChild("toolbar",
                 CubeListBuilder.create()
                         // Center crossbeam (Width 1, 16px wide)
                         .texOffs(0, 16)
                         .addBox(-8.0F, -4.0F, -2.0F, 16.0F, 3.0F, 4.0F)
                         // Control console box
-                        .texOffs(40, 16)
+                        .texOffs(54, 16)
                         .addBox(-2.0F, -7.0F, -1.0F, 4.0F, 3.0F, 2.0F),
                 PartPose.offset(0.0F, 20.0F, 0.0F));
 
         // Beam width extensions
         toolbar.addOrReplaceChild("beam_iron_left",
-                CubeListBuilder.create().texOffs(0, 23).addBox(8.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
+                CubeListBuilder.create().texOffs(0, 24).addBox(8.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
                 PartPose.ZERO);
         toolbar.addOrReplaceChild("beam_iron_right",
-                CubeListBuilder.create().texOffs(0, 23).addBox(-16.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
+                CubeListBuilder.create().texOffs(26, 24).addBox(-16.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
                 PartPose.ZERO);
         toolbar.addOrReplaceChild("beam_diamond_left",
-                CubeListBuilder.create().texOffs(0, 30).addBox(16.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
+                CubeListBuilder.create().texOffs(0, 32).addBox(16.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
                 PartPose.ZERO);
         toolbar.addOrReplaceChild("beam_diamond_right",
-                CubeListBuilder.create().texOffs(0, 30).addBox(-24.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
+                CubeListBuilder.create().texOffs(26, 32).addBox(-24.0F, -4.0F, -2.0F, 8.0F, 3.0F, 4.0F),
                 PartPose.ZERO);
 
-        // Buttons: Active (Green) and Inactive (Red)
+        // Indicator Buttons: Active (Green) and Inactive (Red)
         toolbar.addOrReplaceChild("status_button_active",
-                CubeListBuilder.create().texOffs(0, 64).addBox(-1.5F, -8.0F, -0.5F, 3.0F, 1.0F, 1.0F),
+                CubeListBuilder.create().texOffs(70, 16).addBox(-1.5F, -8.0F, -0.5F, 3.0F, 1.0F, 1.0F),
                 PartPose.ZERO);
         toolbar.addOrReplaceChild("status_button_inactive",
-                CubeListBuilder.create().texOffs(8, 64).addBox(-1.5F, -8.0F, -0.5F, 3.0F, 1.0F, 1.0F),
+                CubeListBuilder.create().texOffs(78, 16).addBox(-1.5F, -8.0F, -0.5F, 3.0F, 1.0F, 1.0F),
                 PartPose.ZERO);
 
-        // CULTIVATOR
+        // ================= CULTIVATOR (TILLER) =================
         toolbar.addOrReplaceChild("cultivator_center",
                 CubeListBuilder.create()
-                        // Center shank
-                        .texOffs(0, 37)
+                        // Center forged spring shank
+                        .texOffs(0, 40)
                         .addBox(-1.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
-                        // Center sweep point
-                        .texOffs(8, 37)
+                        // Hardened duckfoot sweep plow point
+                        .texOffs(16, 40)
                         .addBox(-2.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F),
                 PartPose.ZERO);
 
         toolbar.addOrReplaceChild("cultivator_iron",
                 CubeListBuilder.create()
-                        .texOffs(0, 37).addBox(5.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
-                        .texOffs(8, 37).addBox(3.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F)
-                        .texOffs(0, 37).addBox(-7.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
-                        .texOffs(8, 37).addBox(-8.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F),
+                        .texOffs(0, 40).addBox(5.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
+                        .texOffs(16, 40).addBox(3.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F)
+                        .texOffs(0, 40).addBox(-7.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
+                        .texOffs(16, 40).addBox(-8.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F),
                 PartPose.ZERO);
 
         toolbar.addOrReplaceChild("cultivator_diamond",
                 CubeListBuilder.create()
-                        .texOffs(0, 37).addBox(13.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
-                        .texOffs(8, 37).addBox(11.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F)
-                        .texOffs(0, 37).addBox(-15.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
-                        .texOffs(8, 37).addBox(-16.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F),
+                        .texOffs(0, 40).addBox(13.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
+                        .texOffs(16, 40).addBox(11.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F)
+                        .texOffs(0, 40).addBox(-15.0F, -1.0F, -1.0F, 2.0F, 5.0F, 2.0F)
+                        .texOffs(16, 40).addBox(-16.5F, 3.5F, -3.0F, 5.0F, 1.0F, 4.0F),
                 PartPose.ZERO);
 
-        // HARVESTER
+        // ================= REAL-LIFE HARVESTER (COMBINE GRAIN HEADER) =================
         toolbar.addOrReplaceChild("harvester_cutter_center",
                 CubeListBuilder.create()
-                        .texOffs(0, 44)
-                        .addBox(-8.0F, 2.0F, 0.0F, 16.0F, 2.0F, 4.0F),
-                PartPose.ZERO);
-        toolbar.addOrReplaceChild("harvester_cutter_iron",
-                CubeListBuilder.create()
-                        .texOffs(0, 50).addBox(8.0F, 2.0F, 0.0F, 8.0F, 2.0F, 4.0F)
-                        .texOffs(0, 50).addBox(-16.0F, 2.0F, 0.0F, 8.0F, 2.0F, 4.0F),
-                PartPose.ZERO);
-        toolbar.addOrReplaceChild("harvester_cutter_diamond",
-                CubeListBuilder.create()
-                        .texOffs(0, 56).addBox(16.0F, 2.0F, 0.0F, 8.0F, 2.0F, 4.0F)
-                        .texOffs(0, 56).addBox(-24.0F, 2.0F, 0.0F, 8.0F, 2.0F, 4.0F),
+                        // 1. Sheet metal trough floor & grain pan
+                        .texOffs(0, 100).addBox(-8.0F, 1.0F, 0.0F, 16.0F, 2.5F, 8.0F)
+                        // 2. Rear back sheet wall
+                        .texOffs(50, 100).addBox(-8.0F, -5.0F, 7.0F, 16.0F, 6.0F, 1.5F)
+                        // 3. Double-knife sickle cutterbar with triangular rock guards
+                        .texOffs(88, 100).addBox(-8.0F, 2.0F, -1.0F, 16.0F, 0.8F, 2.0F)
+                        // 4. Outer pointed crop divider snouts (torpedo gatherers)
+                        .texOffs(126, 100).addBox(7.2F, 0.0F, -4.0F, 1.5F, 3.5F, 12.0F)
+                        .texOffs(126, 100).addBox(-8.7F, 0.0F, -4.0F, 1.5F, 3.5F, 12.0F)
+                        // 5. Cross-auger (gathering feed auger drum with spiral flighting)
+                        .texOffs(160, 100).addBox(-7.5F, -1.0F, 3.5F, 15.0F, 3.0F, 3.0F)
+                        // 6. Feeder house & bulk grain tank with inspection window
+                        .texOffs(0, 140).addBox(-4.0F, -9.0F, 5.0F, 8.0F, 5.0F, 5.0F)
+                        // Tank lid with rubber weatherseal
+                        .texOffs(30, 140).addBox(-4.5F, -10.0F, 4.5F, 9.0F, 1.2F, 6.0F)
+                        // Unloading auger tube
+                        .texOffs(62, 140).addBox(4.5F, -7.0F, 5.5F, 2.0F, 2.0F, 7.0F),
                 PartPose.ZERO);
 
-        // Harvester Reel (rotating)
+        toolbar.addOrReplaceChild("harvester_cutter_iron",
+                CubeListBuilder.create()
+                        // Left & Right trough wings
+                        .texOffs(0, 100).addBox(8.0F, 1.0F, 0.0F, 8.0F, 2.5F, 8.0F)
+                        .texOffs(0, 100).addBox(-16.0F, 1.0F, 0.0F, 8.0F, 2.5F, 8.0F)
+                        // Extended back sheet
+                        .texOffs(50, 100).addBox(8.0F, -5.0F, 7.0F, 8.0F, 6.0F, 1.5F)
+                        .texOffs(50, 100).addBox(-16.0F, -5.0F, 7.0F, 8.0F, 6.0F, 1.5F)
+                        // Extended sickle cutterbar
+                        .texOffs(88, 100).addBox(8.0F, 2.0F, -1.0F, 8.0F, 0.8F, 2.0F)
+                        .texOffs(88, 100).addBox(-16.0F, 2.0F, -1.0F, 8.0F, 0.8F, 2.0F)
+                        // Extended auger drum
+                        .texOffs(160, 100).addBox(7.5F, -1.0F, 3.5F, 8.0F, 3.0F, 3.0F)
+                        .texOffs(160, 100).addBox(-15.5F, -1.0F, 3.5F, 8.0F, 3.0F, 3.0F)
+                        // Moved outer divider snouts to wings
+                        .texOffs(126, 100).addBox(15.2F, 0.0F, -4.0F, 1.5F, 3.5F, 12.0F)
+                        .texOffs(126, 100).addBox(-16.7F, 0.0F, -4.0F, 1.5F, 3.5F, 12.0F),
+                PartPose.ZERO);
+
+        toolbar.addOrReplaceChild("harvester_cutter_diamond",
+                CubeListBuilder.create()
+                        // Outer trough wings
+                        .texOffs(0, 100).addBox(16.0F, 1.0F, 0.0F, 8.0F, 2.5F, 8.0F)
+                        .texOffs(0, 100).addBox(-24.0F, 1.0F, 0.0F, 8.0F, 2.5F, 8.0F)
+                        .texOffs(50, 100).addBox(16.0F, -5.0F, 7.0F, 8.0F, 6.0F, 1.5F)
+                        .texOffs(50, 100).addBox(-24.0F, -5.0F, 7.0F, 8.0F, 6.0F, 1.5F)
+                        .texOffs(88, 100).addBox(16.0F, 2.0F, -1.0F, 8.0F, 0.8F, 2.0F)
+                        .texOffs(88, 100).addBox(-24.0F, 2.0F, -1.0F, 8.0F, 0.8F, 2.0F)
+                        .texOffs(160, 100).addBox(15.5F, -1.0F, 3.5F, 8.0F, 3.0F, 3.0F)
+                        .texOffs(160, 100).addBox(-23.5F, -1.0F, 3.5F, 8.0F, 3.0F, 3.0F)
+                        .texOffs(126, 100).addBox(23.2F, 0.0F, -4.0F, 1.5F, 3.5F, 12.0F)
+                        .texOffs(126, 100).addBox(-24.7F, 0.0F, -4.0F, 1.5F, 3.5F, 12.0F),
+                PartPose.ZERO);
+
+        // Harvester Rotating Pickup Bat Reel (4-bat rotating reel with spring tines)
         PartDefinition harvesterReel = toolbar.addOrReplaceChild("harvester_reel",
                 CubeListBuilder.create()
-                        // Central axle
-                        .texOffs(64, 0).addBox(-8.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F)
-                        // Paddle bats
-                        .texOffs(64, 4).addBox(-8.0F, -4.0F, -0.5F, 16.0F, 1.0F, 1.0F)
-                        .texOffs(64, 4).addBox(-8.0F, 3.0F, -0.5F, 16.0F, 1.0F, 1.0F)
-                        .texOffs(64, 6).addBox(-8.0F, -0.5F, -4.0F, 16.0F, 1.0F, 1.0F)
-                        .texOffs(64, 6).addBox(-8.0F, -0.5F, 3.0F, 16.0F, 1.0F, 1.0F),
-                PartPose.offset(0.0F, -1.0F, 2.0F));
+                        // Central reel drive shaft
+                        .texOffs(85, 140).addBox(-8.0F, -0.6F, -0.6F, 16.0F, 1.2F, 1.2F)
+                        // 4 Eccentric Reel Bats with spring pickup fingers
+                        .texOffs(120, 140).addBox(-8.0F, -3.5F, -0.5F, 16.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(-8.0F, 2.7F, -0.5F, 16.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(-8.0F, -0.4F, -3.5F, 16.0F, 1.0F, 0.8F)
+                        .texOffs(120, 140).addBox(-8.0F, -0.4F, 2.7F, 16.0F, 1.0F, 0.8F)
+                        // Reel spiders (end star brackets)
+                        .texOffs(156, 140).addBox(7.6F, -3.5F, -3.5F, 0.6F, 7.0F, 7.0F)
+                        .texOffs(156, 140).addBox(-8.2F, -3.5F, -3.5F, 0.6F, 7.0F, 7.0F),
+                PartPose.offset(0.0F, -2.0F, 1.5F));
 
         harvesterReel.addOrReplaceChild("harvester_reel_iron",
                 CubeListBuilder.create()
-                        .texOffs(64, 8).addBox(8.0F, -1.0F, -1.0F, 8.0F, 2.0F, 2.0F)
-                        .texOffs(64, 8).addBox(-16.0F, -1.0F, -1.0F, 8.0F, 2.0F, 2.0F)
-                        .texOffs(64, 12).addBox(8.0F, -4.0F, -0.5F, 8.0F, 1.0F, 1.0F)
-                        .texOffs(64, 12).addBox(-16.0F, -4.0F, -0.5F, 8.0F, 1.0F, 1.0F)
-                        .texOffs(64, 12).addBox(8.0F, 3.0F, -0.5F, 8.0F, 1.0F, 1.0F)
-                        .texOffs(64, 12).addBox(-16.0F, 3.0F, -0.5F, 8.0F, 1.0F, 1.0F),
+                        .texOffs(85, 140).addBox(8.0F, -0.6F, -0.6F, 8.0F, 1.2F, 1.2F)
+                        .texOffs(85, 140).addBox(-16.0F, -0.6F, -0.6F, 8.0F, 1.2F, 1.2F)
+                        .texOffs(120, 140).addBox(8.0F, -3.5F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(-16.0F, -3.5F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(8.0F, 2.7F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(-16.0F, 2.7F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(8.0F, -0.4F, -3.5F, 8.0F, 1.0F, 0.8F)
+                        .texOffs(120, 140).addBox(-16.0F, -0.4F, -3.5F, 8.0F, 1.0F, 0.8F)
+                        .texOffs(120, 140).addBox(8.0F, -0.4F, 2.7F, 8.0F, 1.0F, 0.8F)
+                        .texOffs(120, 140).addBox(-16.0F, -0.4F, 2.7F, 8.0F, 1.0F, 0.8F),
                 PartPose.ZERO);
 
         harvesterReel.addOrReplaceChild("harvester_reel_diamond",
                 CubeListBuilder.create()
-                        .texOffs(64, 14).addBox(16.0F, -1.0F, -1.0F, 8.0F, 2.0F, 2.0F)
-                        .texOffs(64, 14).addBox(-24.0F, -1.0F, -1.0F, 8.0F, 2.0F, 2.0F)
-                        .texOffs(64, 18).addBox(16.0F, -4.0F, -0.5F, 8.0F, 1.0F, 1.0F)
-                        .texOffs(64, 18).addBox(-24.0F, -4.0F, -0.5F, 8.0F, 1.0F, 1.0F),
+                        .texOffs(85, 140).addBox(16.0F, -0.6F, -0.6F, 8.0F, 1.2F, 1.2F)
+                        .texOffs(85, 140).addBox(-24.0F, -0.6F, -0.6F, 8.0F, 1.2F, 1.2F)
+                        .texOffs(120, 140).addBox(16.0F, -3.5F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(-24.0F, -3.5F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(16.0F, 2.7F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(-24.0F, 2.7F, -0.5F, 8.0F, 0.8F, 1.0F)
+                        .texOffs(120, 140).addBox(16.0F, -0.4F, -3.5F, 8.0F, 1.0F, 0.8F)
+                        .texOffs(120, 140).addBox(-24.0F, -0.4F, -3.5F, 8.0F, 1.0F, 0.8F)
+                        .texOffs(120, 140).addBox(16.0F, -0.4F, 2.7F, 8.0F, 1.0F, 0.8F)
+                        .texOffs(120, 140).addBox(-24.0F, -0.4F, 2.7F, 8.0F, 1.0F, 0.8F),
                 PartPose.ZERO);
 
-        // PLANTER
+        // ================= REAL-LIFE PLANTER (ROW-CROP PLANTER WITH ROW UNITS) =================
         toolbar.addOrReplaceChild("planter_center",
                 CubeListBuilder.create()
-                        // Seed hopper tank
-                        .texOffs(64, 24).addBox(-4.0F, -10.0F, -3.0F, 8.0F, 6.0F, 6.0F)
-                        // Seed hopper lid
-                        .texOffs(64, 36).addBox(-4.5F, -11.0F, -3.5F, 9.0F, 1.0F, 7.0F)
-                        // Drop tube & furrow opener
-                        .texOffs(96, 24).addBox(-1.0F, -4.0F, -1.0F, 2.0F, 7.0F, 2.0F)
-                        // Rear press wheel
-                        .texOffs(96, 33).addBox(-1.5F, 1.0F, 1.0F, 3.0F, 3.0F, 3.0F),
+                        // Center Row Unit Hopper
+                        .texOffs(0, 60).addBox(-3.5F, -11.0F, 3.0F, 7.0F, 6.0F, 6.0F)
+                        // Sloped lower funnel
+                        .texOffs(28, 60).addBox(-2.5F, -5.0F, 4.0F, 5.0F, 2.0F, 4.0F)
+                        // Hopper Lid with molded latch
+                        .texOffs(48, 60).addBox(-4.0F, -12.0F, 2.5F, 8.0F, 1.2F, 7.0F)
+                        // Parallel Linkage Mount Arms
+                        .texOffs(80, 60).addBox(-1.5F, -3.5F, 0.0F, 3.0F, 2.0F, 4.0F)
+                        // Double-Disk Furrow Opener (soil coulter blades)
+                        .texOffs(96, 60).addBox(-1.0F, -2.0F, 4.5F, 2.0F, 4.5F, 4.5F)
+                        // Left & Right Depth Gauge Wheels
+                        .texOffs(112, 60).addBox(2.2F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(-3.7F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        // Seed Drop Meter Tube
+                        .texOffs(126, 60).addBox(-0.5F, -3.0F, 5.5F, 1.0F, 5.0F, 1.0F)
+                        // V-Closing Press Wheels (Soil Firming Pack Wheels)
+                        .texOffs(132, 60).addBox(0.6F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        .texOffs(132, 60).addBox(-2.0F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        // Rear Catwalk Walkway Platform
+                        .texOffs(144, 60).addBox(-6.0F, -3.0F, 10.5F, 12.0F, 1.0F, 3.0F),
                 PartPose.ZERO);
 
         toolbar.addOrReplaceChild("planter_iron",
                 CubeListBuilder.create()
-                        .texOffs(64, 44).addBox(7.0F, -9.0F, -2.5F, 6.0F, 5.0F, 5.0F)
-                        .texOffs(64, 44).addBox(-13.0F, -9.0F, -2.5F, 6.0F, 5.0F, 5.0F)
-                        .texOffs(96, 24).addBox(9.0F, -4.0F, -1.0F, 2.0F, 7.0F, 2.0F)
-                        .texOffs(96, 24).addBox(-11.0F, -4.0F, -1.0F, 2.0F, 7.0F, 2.0F),
+                        // Left Row Unit ($X = -9$)
+                        .texOffs(0, 60).addBox(-12.5F, -11.0F, 3.0F, 7.0F, 6.0F, 6.0F)
+                        .texOffs(28, 60).addBox(-11.5F, -5.0F, 4.0F, 5.0F, 2.0F, 4.0F)
+                        .texOffs(48, 60).addBox(-13.0F, -12.0F, 2.5F, 8.0F, 1.2F, 7.0F)
+                        .texOffs(80, 60).addBox(-10.5F, -3.5F, 0.0F, 3.0F, 2.0F, 4.0F)
+                        .texOffs(96, 60).addBox(-10.0F, -2.0F, 4.5F, 2.0F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(-6.8F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(-12.7F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(132, 60).addBox(-8.4F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        .texOffs(132, 60).addBox(-11.0F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        // Right Row Unit ($X = +9$)
+                        .texOffs(0, 60).addBox(5.5F, -11.0F, 3.0F, 7.0F, 6.0F, 6.0F)
+                        .texOffs(28, 60).addBox(6.5F, -5.0F, 4.0F, 5.0F, 2.0F, 4.0F)
+                        .texOffs(48, 60).addBox(5.0F, -12.0F, 2.5F, 8.0F, 1.2F, 7.0F)
+                        .texOffs(80, 60).addBox(7.5F, -3.5F, 0.0F, 3.0F, 2.0F, 4.0F)
+                        .texOffs(96, 60).addBox(8.0F, -2.0F, 4.5F, 2.0F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(11.2F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(5.3F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(132, 60).addBox(9.6F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        .texOffs(132, 60).addBox(7.0F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        // Extended Walkway Catwalk
+                        .texOffs(144, 60).addBox(-16.0F, -3.0F, 10.5F, 10.0F, 1.0F, 3.0F)
+                        .texOffs(144, 60).addBox(6.0F, -3.0F, 10.5F, 10.0F, 1.0F, 3.0F),
                 PartPose.ZERO);
 
         toolbar.addOrReplaceChild("planter_diamond",
                 CubeListBuilder.create()
-                        .texOffs(64, 44).addBox(16.0F, -9.0F, -2.5F, 6.0F, 5.0F, 5.0F)
-                        .texOffs(64, 44).addBox(-22.0F, -9.0F, -2.5F, 6.0F, 5.0F, 5.0F)
-                        .texOffs(96, 24).addBox(18.0F, -4.0F, -1.0F, 2.0F, 7.0F, 2.0F)
-                        .texOffs(96, 24).addBox(-20.0F, -4.0F, -1.0F, 2.0F, 7.0F, 2.0F),
+                        // Outer Left Row Unit ($X = -18$)
+                        .texOffs(0, 60).addBox(-21.5F, -11.0F, 3.0F, 7.0F, 6.0F, 6.0F)
+                        .texOffs(28, 60).addBox(-20.5F, -5.0F, 4.0F, 5.0F, 2.0F, 4.0F)
+                        .texOffs(48, 60).addBox(-22.0F, -12.0F, 2.5F, 8.0F, 1.2F, 7.0F)
+                        .texOffs(80, 60).addBox(-19.5F, -3.5F, 0.0F, 3.0F, 2.0F, 4.0F)
+                        .texOffs(96, 60).addBox(-19.0F, -2.0F, 4.5F, 2.0F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(-15.8F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(-21.7F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(132, 60).addBox(-17.4F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        .texOffs(132, 60).addBox(-20.0F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        // Outer Right Row Unit ($X = +18$)
+                        .texOffs(0, 60).addBox(14.5F, -11.0F, 3.0F, 7.0F, 6.0F, 6.0F)
+                        .texOffs(28, 60).addBox(15.5F, -5.0F, 4.0F, 5.0F, 2.0F, 4.0F)
+                        .texOffs(48, 60).addBox(14.0F, -12.0F, 2.5F, 8.0F, 1.2F, 7.0F)
+                        .texOffs(80, 60).addBox(16.5F, -3.5F, 0.0F, 3.0F, 2.0F, 4.0F)
+                        .texOffs(96, 60).addBox(17.0F, -2.0F, 4.5F, 2.0F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(20.2F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(112, 60).addBox(14.3F, -1.0F, 4.0F, 1.5F, 4.5F, 4.5F)
+                        .texOffs(132, 60).addBox(18.6F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        .texOffs(132, 60).addBox(16.0F, 0.5F, 9.5F, 1.4F, 3.0F, 3.0F)
+                        // Folding Row Marker Arms
+                        .texOffs(80, 60).addBox(-25.0F, -8.0F, -1.0F, 1.5F, 8.0F, 1.5F)
+                        .texOffs(80, 60).addBox(23.5F, -8.0F, -1.0F, 1.5F, 8.0F, 1.5F)
+                        // Extended Walkway Catwalk
+                        .texOffs(144, 60).addBox(-24.0F, -3.0F, 10.5F, 8.0F, 1.0F, 3.0F)
+                        .texOffs(144, 60).addBox(16.0F, -3.0F, 10.5F, 8.0F, 1.0F, 3.0F),
                 PartPose.ZERO);
 
-        return LayerDefinition.create(meshdefinition, 128, 128);
+        return LayerDefinition.create(meshdefinition, 256, 256);
     }
 
     @Override
