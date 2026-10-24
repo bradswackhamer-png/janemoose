@@ -76,20 +76,15 @@ com.swack.janemoose/
    - Harvester: Combine header with rotating 4-bat reel, sickle cutterbar, and cross-auger; breaks mature crops, replants seeds automatically, and routes gathered harvest into internal 9-slot grain tank.
    - Swath Widths: Wood = 1 block; Iron = 3 blocks; Diamond = 5 blocks.
 
-3. 3D MODELS (TractorModel & AttachmentModel):
-   - Tractor: Authentically proportioned John Deere 4020 silhouette. Detailed 16-sided faceted wheels, front stacked suitcase weights, sloped nose cowl, radiator honeycomb mesh, dual chrome headlights, graphite smokestack with rain flapper cap, cyclone pre-cleaner dome, vinyl operator seat, ROPS canopy sunshade, and 3-point hitch lift arms.
-   - Planter: Multi-row units with parallel linkage bars, tapered poly seed hoppers with molded lids, double-disk furrow openers, depth gauge wheels, seed tubes, V-closing press wheels, and diamond-plate catwalk.
-   - Harvester: Steel header trough, double-knife sickle cutterbar with rock guards, outer torpedo crop dividers, center spiral auger drum, rotating 4-bat pickup reel with spring fingers, grain tank with viewing window, and side unloading auger tube.
+3. 3D MODELS (TractorModel & AttachmentModel) & Z-FIGHTING FIXES:
+   - Tractor: Authentically proportioned John Deere 4020 silhouette. Detailed 16-sided faceted wheels, front stacked suitcase weights, clean front nose, radiator honeycomb mesh, dual chrome headlights, graphite smokestack with rain flapper cap, cyclone pre-cleaner dome, vinyl operator seat, ROPS canopy sunshade, and 3-point hitch lift arms.
+   - Inset Wheel Rims: Diagonal star rim boxes are inset by 0.02F in X (rim_diag & rrim_diag) so outer end caps are not coplanar, eliminating 100% of rim flickering.
+   - Grille & Headlights: Removed conflicting nose cowl and overlapping box; the radiator grille sits cleanly at the front with honeycomb mesh, yellow border, leaping moose badge, and unobstructed round headlights. Zero bar cutting across or flickering.
+   - Hitch Geometry: Offset drawbar and PTO stub shaft from frame rails to avoid coplanar overlap at Y = -5.0F and Z = 10.0F.
 
-4. 2K PHOTOREALISTIC TEXTURING & LABPBR POM:
+4. 2K PHOTOREALISTIC TEXTURING & LABPBR POM SHADER SUPPORT:
    - 2048x2048 (2K) diffuse textures baked with ambient occlusion and brushed metal highlights.
-   - Tangent normal & height displacement maps (_n.png) and specular roughness/metallic maps (_s.png) generated in LabPBR standard.
-   - Full Parallax Occlusion Mapping (POM) depth on tire lugs, louvers, grille, and bolts with shader packs (Iris/Oculus/Complementary/SEUS).
-   - Hood Decals: "JANE MOOSE" (front-left) and "4020" (rear-right) on both left and right sides with guaranteed 30+ pixel clear spacing (no "DIESEL" collision).
-
---------------------------------------------------------------------------------
-[CURRENT GOALS & STATUS]
-- Mod is 100% feature-complete, compiled, tested, and deployed to CurseForge mod directory.
-- 512x512 logo created and embedded in JAR as logoFile.
-- CURSEFORGE_PAGE.md ready for copy-pasting to CurseForge Authors portal for public release.
+   - LabPBR 1.3 Normal & Height POM maps (_n.png) and Specular Roughness/Metallic maps (_s.png).
+   - Decal Preservation: Painted decals and yellow stripe ("JANE MOOSE 4020") have flat height (255) and flat tangent normals (128, 128, 255), completely preventing POM raymarching stepping artifacts so text renders vector-crisp under all shader packs.
+   - Rich POM 3D depth enabled on tactile elements: tire lugs, honeycomb grille, louvers, diamond plate, and chrome bezels.
 ================================================================================

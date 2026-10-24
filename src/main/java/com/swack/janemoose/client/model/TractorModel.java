@@ -52,29 +52,23 @@ public class TractorModel extends EntityModel<TractorRenderState> {
                         .addBox(-4.5F, -6.0F, -21.0F, 9.0F, 5.0F, 2.0F),
                 PartPose.offset(0.0F, 20.0F, 0.0F));
 
-        // 2. Engine Hood, Sloped Nose & Dashboard Console
+        // 2. Engine Hood & Dashboard Console
         partdefinition.addOrReplaceChild("hood",
                 CubeListBuilder.create()
                         // Main Jane Moose green engine hood with yellow body stripe & decals
                         .texOffs(0, 0)
                         .addBox(-5.0F, -15.0F, -17.0F, 10.0F, 9.0F, 13.0F)
-                        // Sloped front nose cowl
-                        .texOffs(50, 0)
-                        .addBox(-4.5F, -14.5F, -18.0F, 9.0F, 3.0F, 2.0F)
                         // Dashboard instrument console
                         .texOffs(74, 0)
                         .addBox(-4.0F, -14.0F, -4.0F, 8.0F, 8.0F, 2.0F),
                 PartPose.offset(0.0F, 20.0F, 0.0F));
 
-        // 3. Honeycomb Radiator Grille, Jane Moose Emblem & Dual Chrome Headlights
+        // 3. Honeycomb Radiator Grille, Jane Moose Emblem & Dual Headlights
         partdefinition.addOrReplaceChild("grill",
                 CubeListBuilder.create()
-                        // Honeycomb mesh grille with yellow perimeter surround & leaping moose emblem
+                        // Honeycomb mesh grille with yellow perimeter surround, leaping moose emblem & headlights
                         .texOffs(96, 0)
-                        .addBox(-4.5F, -14.0F, -18.5F, 9.0F, 8.0F, 1.0F)
-                        // Dual round headlights with chrome bezels and fluted glass
-                        .texOffs(118, 0)
-                        .addBox(-4.0F, -13.0F, -18.8F, 8.0F, 2.5F, 0.5F),
+                        .addBox(-4.8F, -14.8F, -18.0F, 9.6F, 8.8F, 1.0F),
                 PartPose.offset(0.0F, 20.0F, 0.0F));
 
         // 4. Vertical Exhaust Smokestack & Cyclone Air Cleaner Dome
@@ -152,15 +146,15 @@ public class TractorModel extends EntityModel<TractorRenderState> {
         // 9. Rear 3-Point Hitch, Top Link & PTO Spline
         partdefinition.addOrReplaceChild("hitch",
                 CubeListBuilder.create()
-                        // Draft arms & drawbar
+                        // Draft arms & drawbar (offset down and back to prevent coplanar z-fighting with chassis)
                         .texOffs(160, 90)
-                        .addBox(-3.0F, -5.0F, 10.0F, 6.0F, 2.0F, 5.0F)
+                        .addBox(-3.0F, -4.5F, 10.02F, 6.0F, 1.8F, 5.0F)
                         // PTO stub shaft
                         .texOffs(184, 90)
-                        .addBox(-1.0F, -5.0F, 9.5F, 2.0F, 2.0F, 2.0F)
+                        .addBox(-1.0F, -6.5F, 10.02F, 2.0F, 1.8F, 2.0F)
                         // Tow pin
                         .texOffs(184, 90)
-                        .addBox(-0.5F, -6.5F, 13.5F, 1.0F, 4.0F, 1.0F),
+                        .addBox(-0.5F, -6.0F, 13.5F, 1.0F, 3.8F, 1.0F),
                 PartPose.offset(0.0F, 20.0F, 0.0F));
 
         // 10. Front Steering Wheels (Ultra-Round 16-Faceted Narrow Ribbed Tires)
@@ -199,9 +193,9 @@ public class TractorModel extends EntityModel<TractorRenderState> {
                     CubeListBuilder.create().texOffs(0, 130).addBox(-1.6F, -4.0F, -0.78F, 3.2F, 8.0F, 1.56F),
                     PartPose.rotation(angles[i], 0.0F, 0.0F));
         }
-        // Diagonal Rim reinforcement
+        // Diagonal Rim reinforcement (inset by 0.02F to completely prevent coplanar z-fighting)
         wheel.addOrReplaceChild("rim_diag",
-                CubeListBuilder.create().texOffs(50, 130).addBox(-1.7F, -2.5F, -2.5F, 3.4F, 5.0F, 5.0F),
+                CubeListBuilder.create().texOffs(50, 130).addBox(-1.68F, -2.5F, -2.5F, 3.36F, 5.0F, 5.0F),
                 PartPose.rotation(0.7854F, 0.0F, 0.0F));
     }
 
@@ -220,9 +214,9 @@ public class TractorModel extends EntityModel<TractorRenderState> {
                     CubeListBuilder.create().texOffs(0, 160).addBox(-3.0F, -7.0F, -1.375F, 6.0F, 14.0F, 2.75F),
                     PartPose.rotation(angles[i], 0.0F, 0.0F));
         }
-        // Diagonal Rim reinforcement
+        // Diagonal Rim reinforcement (inset by 0.02F to completely prevent coplanar z-fighting)
         wheel.addOrReplaceChild("rrim_diag",
-                CubeListBuilder.create().texOffs(85, 160).addBox(-3.2F, -4.5F, -4.5F, 6.4F, 9.0F, 9.0F),
+                CubeListBuilder.create().texOffs(85, 160).addBox(-3.18F, -4.5F, -4.5F, 6.36F, 9.0F, 9.0F),
                 PartPose.rotation(0.7854F, 0.0F, 0.0F));
     }
 
