@@ -22,7 +22,7 @@ com.swack.janemoose/
   ├── JaneMooseMod.java               -> Main mod entry point, registers event listeners, deferred registers
   ├── client/
   │    ├── JaneMooseClient.java       -> Client mod bus subscriber (registers layers, renderers, keybinds, screens)
-  │    ├── JaneMooseKeyBinds.java     -> Custom keybindings (Lift/Lower, Toggle Power, Tractor GUI)
+  │    ├── JaneMooseKeyBinds.java     -> Custom keybindings (Lift/Lower [H], Toggle Power [X], Toggle Headlights [L], Tractor GUI [C])
   │    ├── model/
   │    │    ├── TractorModel.java     -> 16-facet round wheels, suitcase weights, 4020 hood, ROPS canopy, 3-point hitch
   │    │    └── AttachmentModel.java  -> Row units, combine header/auger/reel, spring-tooth shanks
@@ -32,10 +32,10 @@ com.swack.janemoose/
   │         ├── AttachmentRenderer.java    -> Attachment EntityRenderer with AttachmentRenderState
   │         └── AttachmentRenderState.java -> Reel animation tick, isRaised, isActive, tier, type
   ├── entity/
-  │    ├── JaneMooseTractorEntity.java    -> Vehicle physics, turning logic, fuel tank, hitching, no animal HP
+  │    ├── JaneMooseTractorEntity.java    -> Vehicle physics, turning logic, fuel tank, hitching, real-world headlight illumination, no animal HP
   │    └── JaneMooseAttachmentEntity.java -> Hitch target, cultivator, planter, harvester execution logic
   ├── gui/
-  │    ├── TractorMenu.java / TractorScreen.java       -> Tractor fuel gauge, stats, diesel canister input
+  │    ├── TractorMenu.java / TractorScreen.java       -> Tractor fuel gauge, stats, diesel canister input, headlight & hopper buttons
   │    └── AttachmentMenu.java / AttachmentScreen.java -> Planter seed inventory & Harvester grain tank GUI
   ├── item/
   │    ├── TractorItem.java               -> Places tractor entity directly on right-click
@@ -47,7 +47,7 @@ com.swack.janemoose/
   │    └── WrenchItem.java                -> Hitch/unhitch tool & repair wrench
   ├── network/
   │    ├── ModMessages.java           -> Packet registry (NeoForge CustomPacketPayload)
-  │    └── TractorActionPayload.java  -> Client-to-server action packet (LIFT_TOGGLE, POWER_TOGGLE, OPEN_MENU, OPEN_ATTACHMENT_GUI)
+  │    └── TractorActionPayload.java  -> Client-to-server action packet (LIFT_TOGGLE, POWER_TOGGLE, OPEN_MENU, OPEN_ATTACHMENT_GUI, TOGGLE_LIGHTS)
   └── registry/
        ├── ModCreativeTabs.java       -> Dedicated Jane Moose creative tab with custom icon
        ├── ModEntities.java           -> TRACTOR & ATTACHMENT EntityTypes
@@ -94,4 +94,10 @@ com.swack.janemoose/
    - LabPBR 1.3 Normal & Height POM maps (_n.png) and Specular Roughness/Metallic maps (_s.png).
    - Decal Preservation: Painted decals and yellow stripe ("JANE MOOSE 4020") have flat height (255) and flat tangent normals (128, 128, 255), completely preventing POM raymarching stepping artifacts so text renders vector-crisp under all shader packs.
    - Rich POM 3D depth enabled on tactile elements: tire lugs, honeycomb grille, louvers, diamond plate, and chrome bezels.
+
+6. DYNAMIC HEADLIGHT ILLUMINATION & HOTKEY SYSTEM:
+   - Controls: Assignable hotkey in Controls > Key Binds under 'Jane Moose Machinery' (default key [L]) and dedicated button on Tractor Dashboard GUI.
+   - Illumination Origin: Dynamic server-side light source (Level 15 invisible Blocks.LIGHT) placed 1.85m in front of tractor along the yaw forward vector at Y+0.85 (headlight height), illuminating a 15-block radius directly in front of the grille.
+   - Adaptive Placement: Automatically checks open air, water (with LightBlock.WATERLOGGED support), or elevated terrain so illumination never clips inside solid terrain.
+   - Full Lifecycle Cleanup: Light block moves smoothly as tractor drives, clears immediately when toggled OFF, unhitched, discarded, picked up, or unloaded, leaving zero phantom light blocks in the world.
 ================================================================================

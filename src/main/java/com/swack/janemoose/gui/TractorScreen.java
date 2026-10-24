@@ -16,6 +16,7 @@ public class TractorScreen extends AbstractContainerScreen<TractorMenu> {
     private EditBox nameEditBox;
     private Button liftButton;
     private Button activeButton;
+    private Button lightsButton;
     private Button hopperButton;
 
     public TractorScreen(TractorMenu menu, Inventory playerInventory, Component title) {
@@ -57,10 +58,20 @@ public class TractorScreen extends AbstractContainerScreen<TractorMenu> {
             sendPacket(new TractorActionPayload(TractorActionPayload.ACTION_TOGGLE_ACTIVE, ""));
         }).bounds(left + 90, top + 78, 78, 16).build());
 
+        // Headlights Button (On / Off)
+        this.lightsButton = this.addRenderableWidget(Button.builder(getLightsButtonText(), btn -> {
+            sendPacket(new TractorActionPayload(TractorActionPayload.ACTION_TOGGLE_LIGHTS, ""));
+        }).bounds(left + 8, top + 96, 78, 16).build());
+
         // Open Hopper / Grain Tank Button
         this.hopperButton = this.addRenderableWidget(Button.builder(getHopperButtonText(), btn -> {
             sendPacket(new TractorActionPayload(TractorActionPayload.ACTION_OPEN_ATTACHMENT_GUI, ""));
-        }).bounds(left + 8, top + 96, 160, 16).build());
+        }).bounds(left + 90, top + 96, 78, 16).build());
+    }
+
+    private Component getLightsButtonText() {
+        boolean on = this.menu.areHeadlightsOn();
+        return on ? Component.literal("§eLights: ON§r") : Component.literal("§7Lights: OFF§r");
     }
 
     private Component getLiftButtonText() {
@@ -82,15 +93,15 @@ public class TractorScreen extends AbstractContainerScreen<TractorMenu> {
             return Component.literal("No Implement");
         }
         if (!this.menu.hasInventory()) {
-            return Component.literal("Cultivator (No Inventory)");
+            return Component.literal("No Hopper");
         }
         JaneMooseTractorEntity tractor = this.menu.getTractor();
         JaneMooseAttachmentEntity att = (tractor != null) ? tractor.getHitchedAttachment() : null;
         if (att != null && att.getItem().getItem() instanceof com.swack.janemoose.item.IAttachment iAtt) {
             return (iAtt.getType() == com.swack.janemoose.item.IAttachment.AttachmentType.PLANTER) ?
-                    Component.literal("Open Seed Hopper") : Component.literal("Open Grain Tank");
+                    Component.literal("Seed Hopper") : Component.literal("Grain Tank");
         }
-        return Component.literal("Open Seed Hopper / Grain Tank");
+        return Component.literal("Open Hopper");
     }
 
     private void sendPacket(TractorActionPayload payload) {
@@ -109,6 +120,9 @@ public class TractorScreen extends AbstractContainerScreen<TractorMenu> {
         if (this.activeButton != null) {
             this.activeButton.setMessage(getActiveButtonText());
             this.activeButton.active = this.menu.isHitched();
+        }
+        if (this.lightsButton != null) {
+            this.lightsButton.setMessage(getLightsButtonText());
         }
         if (this.hopperButton != null) {
             this.hopperButton.setMessage(getHopperButtonText());

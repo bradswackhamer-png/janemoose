@@ -142,6 +142,10 @@ public class TractorMenu extends AbstractContainerMenu {
         return this.data.get(5) == 1;
     }
 
+    public boolean areHeadlightsOn() {
+        return this.tractor != null && this.tractor.areHeadlightsOn();
+    }
+
     @Override
     public void broadcastChanges() {
         super.broadcastChanges();

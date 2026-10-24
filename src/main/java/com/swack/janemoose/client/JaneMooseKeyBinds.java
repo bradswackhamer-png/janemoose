@@ -29,6 +29,13 @@ public class JaneMooseKeyBinds {
             CATEGORY
     );
 
+    public static final KeyMapping KEY_TOGGLE_LIGHTS = new KeyMapping(
+            "key.janemoose.toggle_lights",
+            InputConstants.Type.KEYBOARD,
+            InputConstants.KEY_L,
+            CATEGORY
+    );
+
     public static final KeyMapping KEY_OPEN_GUI = new KeyMapping(
             "key.janemoose.open_gui",
             InputConstants.Type.KEYBOARD,
@@ -40,6 +47,7 @@ public class JaneMooseKeyBinds {
         event.registerCategory(CATEGORY);
         event.register(KEY_TOGGLE_LIFT);
         event.register(KEY_TOGGLE_ACTIVE);
+        event.register(KEY_TOGGLE_LIGHTS);
         event.register(KEY_OPEN_GUI);
     }
 
@@ -58,6 +66,12 @@ public class JaneMooseKeyBinds {
             while (KEY_TOGGLE_ACTIVE.consumeClick()) {
                 mc.getConnection().send(new ServerboundCustomPayloadPacket(
                         new TractorActionPayload(TractorActionPayload.ACTION_TOGGLE_ACTIVE, "")
+                ));
+            }
+
+            while (KEY_TOGGLE_LIGHTS.consumeClick()) {
+                mc.getConnection().send(new ServerboundCustomPayloadPacket(
+                        new TractorActionPayload(TractorActionPayload.ACTION_TOGGLE_LIGHTS, "")
                 ));
             }
 

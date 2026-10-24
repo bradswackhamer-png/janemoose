@@ -31,6 +31,11 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LightBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
@@ -50,8 +55,11 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
             SynchedEntityData.defineId(JaneMooseTractorEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_ATTACHMENT_ID =
             SynchedEntityData.defineId(JaneMooseTractorEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> DATA_HEADLIGHTS =
+            SynchedEntityData.defineId(JaneMooseTractorEntity.class, EntityDataSerializers.BOOLEAN);
 
     private int operationCooldown = 0;
+    private BlockPos lastLightPos = null;
 
     // Movement tracking on both client and server
     private double prevCoordX = Double.NaN;
@@ -82,6 +90,27 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
         builder.define(DATA_ATTACHMENT, ItemStack.EMPTY);
         builder.define(DATA_ENGINE_RUNNING, false);
         builder.define(DATA_ATTACHMENT_ID, -1);
+        builder.define(DATA_HEADLIGHTS, false);
+    }
+
+    public boolean areHeadlightsOn() {
+        return this.entityData.get(DATA_HEADLIGHTS);
+    }
+
+    public void setHeadlightsOn(boolean on) {
+        this.entityData.set(DATA_HEADLIGHTS, on);
+        if (!on && !this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+            removeLightBlock(serverLevel);
+        }
+    }
+
+    public void toggleHeadlights(Player player) {
+        boolean newState = !areHeadlightsOn();
+        setHeadlightsOn(newState);
+        this.level().playSound(null, this.blockPosition(), SoundEvents.STONE_BUTTON_CLICK_ON, SoundSource.PLAYERS, 0.8F, newState ? 1.4F : 0.9F);
+        if (player != null) {
+            player.sendOverlayMessage(Component.translatable(newState ? "message.janemoose.lights_on" : "message.janemoose.lights_off"));
+        }
     }
 
     public int getFuel() {
@@ -387,6 +416,13 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
         if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
             this.entityData.set(DATA_ENGINE_RUNNING, rider != null && getFuel() > 0);
 
+            // Headlight real-world illumination handling
+            if (areHeadlightsOn()) {
+                updateHeadlightIllumination(serverLevel);
+            } else if (this.lastLightPos != null) {
+                removeLightBlock(serverLevel);
+            }
+
             JaneMooseAttachmentEntity hitched = getHitchedAttachment();
 
             // Auto-hitch when backing up near an unhitched attachment entity
@@ -428,6 +464,91 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
                     }
                 }
             }
+        }
+    }
+
+    private void updateHeadlightIllumination(ServerLevel level) {
+        float yawRad = (float) Math.toRadians(this.getYRot());
+        double forwardX = -Math.sin(yawRad);
+        double forwardZ = Math.cos(yawRad);
+
+        BlockPos bestPos = findBestHeadlightPos(level, forwardX, forwardZ);
+        if (bestPos != null) {
+            if (!bestPos.equals(this.lastLightPos)) {
+                removeLightBlock(level);
+                placeLightAt(level, bestPos);
+            } else {
+                BlockState current = level.getBlockState(bestPos);
+                if (!current.is(Blocks.LIGHT)) {
+                    placeLightAt(level, bestPos);
+                }
+            }
+        } else {
+            removeLightBlock(level);
+        }
+    }
+
+    private BlockPos findBestHeadlightPos(ServerLevel level, double forwardX, double forwardZ) {
+        // 1. Primary beam point: 1.85 blocks in front of tractor, at headlight height
+        BlockPos primary = BlockPos.containing(this.getX() + forwardX * 1.85, this.getY() + 0.85, this.getZ() + forwardZ * 1.85);
+        if (canPlaceLightAt(level, primary)) {
+            return primary;
+        }
+
+        // 2. Upward offset if ground slopes up or crops are below
+        BlockPos primaryUp = primary.above();
+        if (canPlaceLightAt(level, primaryUp)) {
+            return primaryUp;
+        }
+
+        // 3. Closer in front of grille (1.3 blocks forward)
+        BlockPos closer = BlockPos.containing(this.getX() + forwardX * 1.3, this.getY() + 0.9, this.getZ() + forwardZ * 1.3);
+        if (canPlaceLightAt(level, closer)) {
+            return closer;
+        }
+
+        // 4. Above hood
+        BlockPos aboveHood = BlockPos.containing(this.getX() + forwardX * 0.8, this.getY() + 1.2, this.getZ() + forwardZ * 0.8);
+        if (canPlaceLightAt(level, aboveHood)) {
+            return aboveHood;
+        }
+
+        return null;
+    }
+
+    private boolean canPlaceLightAt(ServerLevel level, BlockPos pos) {
+        if (pos.equals(this.lastLightPos)) {
+            return true;
+        }
+        BlockState state = level.getBlockState(pos);
+        if (state.isAir() || state.is(Blocks.LIGHT)) {
+            return true;
+        }
+        FluidState fluid = level.getFluidState(pos);
+        return fluid.is(Fluids.WATER) && fluid.isSource() && state.is(Blocks.WATER);
+    }
+
+    private void placeLightAt(ServerLevel level, BlockPos pos) {
+        FluidState fluid = level.getFluidState(pos);
+        boolean isWater = fluid.is(Fluids.WATER);
+        BlockState lightState = Blocks.LIGHT.defaultBlockState()
+                .setValue(LightBlock.LEVEL, 15)
+                .setValue(LightBlock.WATERLOGGED, isWater);
+        level.setBlock(pos, lightState, 3);
+        this.lastLightPos = pos;
+    }
+
+    private void removeLightBlock(ServerLevel level) {
+        if (this.lastLightPos != null) {
+            BlockState state = level.getBlockState(this.lastLightPos);
+            if (state.is(Blocks.LIGHT)) {
+                if (state.hasProperty(LightBlock.WATERLOGGED) && state.getValue(LightBlock.WATERLOGGED)) {
+                    level.setBlock(this.lastLightPos, Blocks.WATER.defaultBlockState(), 3);
+                } else {
+                    level.setBlock(this.lastLightPos, Blocks.AIR.defaultBlockState(), 3);
+                }
+            }
+            this.lastLightPos = null;
         }
     }
 
@@ -526,6 +647,7 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
             return false;
         }
         if (!this.isRemoved()) {
+            removeLightBlock(level);
             unhitchAttachment();
             if (source.getEntity() instanceof Player player && player.isCreative()) {
                 this.dropAttachment(level);
@@ -539,6 +661,14 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
             return true;
         }
         return true;
+    }
+
+    @Override
+    public void remove(Entity.RemovalReason reason) {
+        if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+            removeLightBlock(serverLevel);
+        }
+        super.remove(reason);
     }
 
     @Override
@@ -562,6 +692,13 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
         setFuel(input.getIntOr("Fuel", 2000));
         input.read("Attachment", ItemStack.CODEC).ifPresent(this::setAttachment);
         setAttachmentEntityId(input.getIntOr("AttachmentEntityId", -1));
+        setHeadlightsOn(input.getBooleanOr("Headlights", false));
+        if (input.getIntOr("LastLightY", -999) != -999) {
+            int lx = input.getIntOr("LastLightX", 0);
+            int ly = input.getIntOr("LastLightY", 0);
+            int lz = input.getIntOr("LastLightZ", 0);
+            this.lastLightPos = new BlockPos(lx, ly, lz);
+        }
     }
 
     @Override
@@ -573,5 +710,11 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
             output.store("Attachment", ItemStack.CODEC, attachment);
         }
         output.putInt("AttachmentEntityId", getAttachmentEntityId());
+        output.putBoolean("Headlights", areHeadlightsOn());
+        if (this.lastLightPos != null) {
+            output.putInt("LastLightX", this.lastLightPos.getX());
+            output.putInt("LastLightY", this.lastLightPos.getY());
+            output.putInt("LastLightZ", this.lastLightPos.getZ());
+        }
     }
 }

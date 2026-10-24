@@ -18,6 +18,7 @@ public record TractorActionPayload(int action, String extraData) implements Cust
     public static final int ACTION_OPEN_GUI = 2;
     public static final int ACTION_RENAME = 3;
     public static final int ACTION_OPEN_ATTACHMENT_GUI = 4;
+    public static final int ACTION_TOGGLE_LIGHTS = 5;
 
     public static final Type<TractorActionPayload> TYPE =
             new Type<>(Identifier.fromNamespaceAndPath("janemoose", "tractor_action"));
@@ -37,7 +38,14 @@ public record TractorActionPayload(int action, String extraData) implements Cust
     public static void handle(TractorActionPayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             Player player = context.player();
-            if (player.getVehicle() instanceof JaneMooseTractorEntity tractor) {
+            JaneMooseTractorEntity tractor = null;
+            if (player.getVehicle() instanceof JaneMooseTractorEntity t) {
+                tractor = t;
+            } else if (player.containerMenu instanceof com.swack.janemoose.gui.TractorMenu menu) {
+                tractor = menu.getTractor();
+            }
+
+            if (tractor != null) {
                 switch (payload.action()) {
                     case ACTION_TOGGLE_LIFT -> tractor.toggleAttachmentLift(player);
                     case ACTION_TOGGLE_ACTIVE -> tractor.toggleAttachmentActive(player);
@@ -58,6 +66,7 @@ public record TractorActionPayload(int action, String extraData) implements Cust
                             att.openCustomGui(serverPlayer);
                         }
                     }
+                    case ACTION_TOGGLE_LIGHTS -> tractor.toggleHeadlights(player);
                 }
             }
         });

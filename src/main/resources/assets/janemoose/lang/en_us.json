@@ -23,6 +23,7 @@
   "key.category.janemoose.machinery": "Jane Moose Machinery",
   "key.janemoose.toggle_lift": "Lift / Lower Hydraulics",
   "key.janemoose.toggle_active": "Toggle Implement (On / Off)",
+  "key.janemoose.toggle_lights": "Toggle Headlights (On / Off)",
   "key.janemoose.open_gui": "Open Tractor Dashboard",
 
   "gui.janemoose.tractor_dashboard": "Jane Moose 4020 Dashboard",
@@ -42,10 +43,12 @@
   "message.janemoose.lifted": "Implement: §eLIFTED (Transport Mode - 100% Speed)§r",
   "message.janemoose.active": "Implement: §aON (Running)§r",
   "message.janemoose.inactive": "Implement: §cOFF (Stopped)§r",
+  "message.janemoose.lights_on": "Jane Moose: Headlights §aON§r",
+  "message.janemoose.lights_off": "Jane Moose: Headlights §7OFF§r",
   "message.janemoose.fuel_status": "Jane Moose Diesel Tank: %s / %s mB | Rear Attachment: %s",
   "message.janemoose.none": "None",
 
-  "tooltip.janemoose.tractor": "§aNothing runs like a moose!§r\n§eRideable farm tractor powered by diesel.\n§7Press [H] to lift/lower hydraulics.\n§7Press [X] to toggle implement On/Off.\n§7Press [C] or sneak-right-click to open Dashboard.",
+  "tooltip.janemoose.tractor": "§aNothing runs like a moose!§r\n§eRideable farm tractor powered by diesel.\n§7Press [L] to toggle headlights.\n§7Press [H] to lift/lower hydraulics.\n§7Press [X] to toggle implement On/Off.\n§7Press [C] or sneak-right-click to open Dashboard.",
   "tooltip.janemoose.diesel_canister": "§e1,000 mB of refined diesel fuel.§r\n§7Right-click on a Jane Moose tractor to refuel.",
   "tooltip.janemoose.wrench": "§eJane Moose Tool§r\n§7Right-click tractor to inspect or open Dashboard.\n§7Sneak-right-click to detach equipment or retrieve the tractor.",
 
