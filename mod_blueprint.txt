@@ -38,16 +38,16 @@ com.swack.janemoose/
   │    ├── TractorMenu.java / TractorScreen.java       -> Tractor fuel gauge, stats, diesel canister input
   │    └── AttachmentMenu.java / AttachmentScreen.java -> Planter seed inventory & Harvester grain tank GUI
   ├── item/
-  │    ├── TractorItem.java               -> Places tractor entity
+  │    ├── TractorItem.java               -> Places tractor entity directly on right-click
   │    ├── IAttachment.java               -> Base interface for attachment types and tiers
-  │    ├── CultivatorAttachmentItem.java  -> Spawns cultivator entity
-  │    ├── PlanterAttachmentItem.java     -> Spawns planter entity
-  │    ├── HarvesterAttachmentItem.java   -> Spawns harvester entity
+  │    ├── CultivatorAttachmentItem.java  -> Places cultivator entity directly on right-click
+  │    ├── PlanterAttachmentItem.java     -> Places planter entity directly on right-click
+  │    ├── HarvesterAttachmentItem.java   -> Places harvester entity directly on right-click
   │    ├── DieselCanisterItem.java        -> Refueling item (provides fuel ticks to tractor)
   │    └── WrenchItem.java                -> Hitch/unhitch tool & repair wrench
   ├── network/
   │    ├── ModMessages.java           -> Packet registry (NeoForge CustomPacketPayload)
-  │    └── TractorActionPayload.java  -> Client-to-server action packet (LIFT_TOGGLE, POWER_TOGGLE, OPEN_MENU)
+  │    └── TractorActionPayload.java  -> Client-to-server action packet (LIFT_TOGGLE, POWER_TOGGLE, OPEN_MENU, OPEN_ATTACHMENT_GUI)
   └── registry/
        ├── ModCreativeTabs.java       -> Dedicated Jane Moose creative tab with custom icon
        ├── ModEntities.java           -> TRACTOR & ATTACHMENT EntityTypes
@@ -67,6 +67,7 @@ com.swack.janemoose/
    - Fuel Mechanics: Diesel fuel consumption rate based on engine load; stalls when empty. Refueled using Diesel Canister via right-click or Tractor GUI.
 
 2. ATTACHMENTS & TIERS (JaneMooseAttachmentEntity):
+   - Placement: Holding any attachment item (Cultivator, Planter, Harvester) and right-clicking any block immediately places the 3D entity on the ground.
    - Hitch Mechanism: 3-point hitch connects when tractor reverses up to an attachment and right-clicks with Wrench.
    - Mode States:
      * Raised (Transport Mode): Implements lifted 8px above ground; tools disengage; no tractor speed penalty; visual animation pauses.
@@ -76,13 +77,19 @@ com.swack.janemoose/
    - Harvester: Combine header with rotating 4-bat reel, sickle cutterbar, and cross-auger; breaks mature crops, replants seeds automatically, and routes gathered harvest into internal 9-slot grain tank.
    - Swath Widths: Wood = 1 block; Iron = 3 blocks; Diamond = 5 blocks.
 
-3. 3D MODELS (TractorModel & AttachmentModel) & Z-FIGHTING FIXES:
-   - Tractor: Authentically proportioned John Deere 4020 silhouette. Detailed 16-sided faceted wheels, front stacked suitcase weights, clean front nose, radiator honeycomb mesh, dual chrome headlights, graphite smokestack with rain flapper cap, cyclone pre-cleaner dome, vinyl operator seat, ROPS canopy sunshade, and 3-point hitch lift arms.
-   - Inset Wheel Rims: Diagonal star rim boxes are inset by 0.02F in X (rim_diag & rrim_diag) so outer end caps are not coplanar, eliminating 100% of rim flickering.
-   - Grille & Headlights: Removed conflicting nose cowl and overlapping box; the radiator grille sits cleanly at the front with honeycomb mesh, yellow border, leaping moose badge, and unobstructed round headlights. Zero bar cutting across or flickering.
-   - Hitch Geometry: Offset drawbar and PTO stub shaft from frame rails to avoid coplanar overlap at Y = -5.0F and Z = 10.0F.
+3. GUI & SCREEN RESILIENCE:
+   - AttachmentMenu & AttachmentScreen: Buffer sends attachment entity ID and slot count. Uses clean if-else logic (no synthetic enum-mapping switch classes) and resilient client/server slot alignment to prevent ClassNotFoundException / ZipException when hot-reloading.
+   - TractorScreen: Dedicated hopper button routes to ACTION_OPEN_ATTACHMENT_GUI on server, cleanly opening AttachmentScreen.
 
-4. 2K PHOTOREALISTIC TEXTURING & LABPBR POM SHADER SUPPORT:
+4. 3D MODELS (TractorModel & AttachmentModel) & Z-FIGHTING RESOLUTIONS:
+   - Tractor: Authentically proportioned John Deere 4020 silhouette. Detailed 16-sided faceted wheels, front stacked suitcase weights, clean front nose, radiator honeycomb mesh, dual chrome headlights, graphite smokestack with rain flapper cap, cyclone pre-cleaner dome, vinyl operator seat, ROPS canopy sunshade, and 3-point hitch lift arms.
+   - Rear Chassis & Axle Decoupling: Frame rails end cleanly at Z=6.95F; rear axle starts at Z=7.0F and runs to Z=10.0F. No double-box internal overlap, zero coplanar top, bottom, or back faces.
+   - Platform Floor Deck: Diamond-plate platform extends back to Z=9.8F at Y=-5.8F, resting cleanly above the axle with no coplanar Z-fighting.
+   - Inset Wheel Rims: Diagonal star rim boxes are inset by 0.02F in X (rim_diag & rrim_diag) so outer end caps are not coplanar, eliminating 100% of rim flickering.
+   - Grille & Headlights: Removed conflicting nose cowl and overlapping box; the radiator grille sits cleanly at the front with honeycomb mesh, yellow border, leaping moose badge, and unobstructed round headlights.
+   - Hitch Geometry: Drawbar and PTO stub shaft offset to Z=10.05F, cleanly separating them from the axle back face at Z=10.0F.
+
+5. 2K PHOTOREALISTIC TEXTURING & LABPBR POM SHADER SUPPORT:
    - 2048x2048 (2K) diffuse textures baked with ambient occlusion and brushed metal highlights.
    - LabPBR 1.3 Normal & Height POM maps (_n.png) and Specular Roughness/Metallic maps (_s.png).
    - Decal Preservation: Painted decals and yellow stripe ("JANE MOOSE 4020") have flat height (255) and flat tangent normals (128, 128, 255), completely preventing POM raymarching stepping artifacts so text renders vector-crisp under all shader packs.

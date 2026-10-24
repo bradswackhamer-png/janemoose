@@ -3,6 +3,8 @@ package com.swack.janemoose.gui;
 import com.swack.janemoose.entity.JaneMooseAttachmentEntity;
 import com.swack.janemoose.registry.ModMenus;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -15,22 +17,25 @@ public class AttachmentMenu extends AbstractContainerMenu {
     private final int slotCount;
 
     public AttachmentMenu(int containerId, Inventory playerInv, RegistryFriendlyByteBuf buf) {
-        this(containerId, playerInv, findAttachment(playerInv, buf.readInt()));
+        this(containerId, playerInv, findAttachment(playerInv, buf.readInt()), buf.readInt());
     }
 
     public AttachmentMenu(int containerId, Inventory playerInv, JaneMooseAttachmentEntity attachment) {
+        this(containerId, playerInv, attachment, (attachment != null) ? attachment.getSlotCount() : 9);
+    }
+
+    public AttachmentMenu(int containerId, Inventory playerInv, JaneMooseAttachmentEntity attachment, int slotCount) {
         super(ModMenus.ATTACHMENT_MENU.get(), containerId);
         this.attachment = attachment;
-        this.slotCount = (attachment != null) ? attachment.getSlotCount() : 27;
+        this.slotCount = slotCount;
 
         int rows = Math.max(1, this.slotCount / 9);
+        Container inv = (attachment != null) ? attachment.getInventory() : new SimpleContainer(slotCount);
 
         // Attachment Inventory Slots (1, 2, or 3 rows of 9)
-        if (attachment != null) {
-            for (int r = 0; r < rows; r++) {
-                for (int c = 0; c < 9; c++) {
-                    this.addSlot(new Slot(attachment.getInventory(), c + r * 9, 8 + c * 18, 18 + r * 18));
-                }
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < 9; c++) {
+                this.addSlot(new Slot(inv, c + r * 9, 8 + c * 18, 18 + r * 18));
             }
         }
 
@@ -91,6 +96,9 @@ public class AttachmentMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return this.attachment != null && this.attachment.isAlive() && player.distanceToSqr(this.attachment) < 64.0;
+        if (this.attachment == null) {
+            return player.level().isClientSide();
+        }
+        return this.attachment.isAlive() && player.distanceToSqr(this.attachment) < 64.0;
     }
 }

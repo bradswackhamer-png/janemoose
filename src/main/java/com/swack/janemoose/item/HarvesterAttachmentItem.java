@@ -49,27 +49,14 @@ public class HarvesterAttachmentItem extends Item implements IAttachment {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
-        BlockPos clickedPos = context.getClickedPos();
-        Player player = context.getPlayer();
-
-        // 1. Handheld use: Right click mature crop to harvest by hand!
-        if (player != null && !player.isSecondaryUseActive()) {
-            if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
-                if (processBlock(serverLevel, clickedPos, null, null, player)) {
-                    return InteractionResult.SUCCESS;
-                }
-            } else if (level.isClientSide()) {
-                return InteractionResult.SUCCESS;
-            }
-        }
-
-        // 2. Sneak-right-click: Place 3D Implement Entity for Tractor
         if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
 
+        BlockPos clickedPos = context.getClickedPos();
         Direction face = context.getClickedFace();
         BlockPos spawnPos = clickedPos.relative(face);
+        Player player = context.getPlayer();
 
         if (level instanceof ServerLevel serverLevel) {
             JaneMooseAttachmentEntity attachment = ModEntities.ATTACHMENT.get().create(serverLevel, EntitySpawnReason.SPAWN_ITEM_USE);

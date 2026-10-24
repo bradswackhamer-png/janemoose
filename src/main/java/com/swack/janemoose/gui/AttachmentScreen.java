@@ -32,11 +32,13 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentMenu> {
         JaneMooseAttachmentEntity att = this.menu.getAttachment();
         String headerTitle = "IMPLEMENT STORAGE";
         if (att != null && att.getItem().getItem() instanceof IAttachment item) {
-            headerTitle = switch (item.getType()) {
-                case PLANTER -> "SEED HOPPERS (Add Seeds Here)";
-                case HARVESTER -> "GRAIN TANK (Harvested Crops)";
-                case CULTIVATOR -> "TOOL CHEST";
-            };
+            if (item.getType() == IAttachment.AttachmentType.PLANTER) {
+                headerTitle = "SEED HOPPERS (Add Seeds Here)";
+            } else if (item.getType() == IAttachment.AttachmentType.HARVESTER) {
+                headerTitle = "GRAIN TANK (Harvested Crops)";
+            } else {
+                headerTitle = "TOOL CHEST";
+            }
         }
         extractor.centeredText(this.font, "§l" + headerTitle + "§r", left + this.imageWidth / 2, top + 4, 0xFFFFDE00);
 

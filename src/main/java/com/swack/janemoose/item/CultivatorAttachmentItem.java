@@ -51,28 +51,14 @@ public class CultivatorAttachmentItem extends Item implements IAttachment {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
-        BlockPos clickedPos = context.getClickedPos();
-        Player player = context.getPlayer();
-        BlockState clickedState = level.getBlockState(clickedPos);
-
-        // 1. Handheld Use: Right-click on tillable ground (without sneaking) to till like a hoe!
-        if (player != null && !player.isSecondaryUseActive() && (isTillable(clickedState) || isTillable(level.getBlockState(clickedPos.below())))) {
-            if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
-                BlockPos targetSoil = isTillable(clickedState) ? clickedPos : clickedPos.below();
-                tillArea(serverLevel, targetSoil, player, context.getHorizontalDirection());
-            } else if (level.isClientSide()) {
-                level.playSound(player, clickedPos, SoundEvents.HOE_TILL.value(), SoundSource.BLOCKS, 1.0F, 1.0F);
-            }
-            return InteractionResult.SUCCESS;
-        }
-
-        // 2. Sneak-Right-Click (or click non-tillable block): Place 3D Attachment Entity for Tractor
         if (level.isClientSide()) {
             return InteractionResult.SUCCESS;
         }
 
+        BlockPos clickedPos = context.getClickedPos();
         Direction face = context.getClickedFace();
         BlockPos spawnPos = clickedPos.relative(face);
+        Player player = context.getPlayer();
 
         if (level instanceof ServerLevel serverLevel) {
             JaneMooseAttachmentEntity attachment = ModEntities.ATTACHMENT.get().create(serverLevel, EntitySpawnReason.SPAWN_ITEM_USE);

@@ -35,15 +35,15 @@ public class TractorModel extends EntityModel<TractorRenderState> {
         // 1. Heavy Industrial Steel Chassis, Axles & Front Weights
         partdefinition.addOrReplaceChild("chassis",
                 CubeListBuilder.create()
-                        // Main steel frame rails
+                        // Main steel frame rails (stops at Z=6.95F before the rear axle housing to prevent internal volume overlap)
                         .texOffs(0, 30)
-                        .addBox(-7.0F, -5.0F, -12.0F, 14.0F, 3.0F, 22.0F)
+                        .addBox(-6.8F, -4.9F, -12.0F, 13.6F, 2.9F, 18.95F)
                         // Front cast-iron axle beam & steering tie rod
                         .texOffs(76, 30)
                         .addBox(-8.0F, -4.0F, -11.0F, 16.0F, 2.0F, 2.0F)
-                        // Rear heavy axle & differential housing
+                        // Rear heavy axle & differential housing (starts cleanly at Z=7.0F, extends to Z=10.0F with NO frame overlap)
                         .texOffs(76, 36)
-                        .addBox(-10.0F, -5.0F, 7.0F, 20.0F, 3.0F, 3.0F)
+                        .addBox(-10.0F, -4.9F, 7.0F, 20.0F, 2.9F, 3.0F)
                         // Front weight bracket
                         .texOffs(76, 44)
                         .addBox(-5.0F, -4.0F, -19.0F, 10.0F, 3.0F, 2.0F)
@@ -110,9 +110,9 @@ public class TractorModel extends EntityModel<TractorRenderState> {
                         // 3-spoke steering wheel with center emblem
                         .texOffs(64, 60)
                         .addBox(-2.5F, -14.0F, -5.0F, 5.0F, 1.0F, 5.0F)
-                        // Diamond-plate non-slip platform floor
+                        // Diamond-plate non-slip platform floor (extends cleanly over the rear axle to Z=9.8F)
                         .texOffs(86, 60)
-                        .addBox(-7.0F, -5.5F, -4.0F, 14.0F, 1.0F, 12.0F),
+                        .addBox(-7.0F, -5.8F, -4.0F, 14.0F, 0.85F, 13.8F),
                 PartPose.offset(0.0F, 20.0F, 0.0F));
 
         // 7. Jane Moose Yellow Clamshell Fenders with Lights
@@ -146,12 +146,12 @@ public class TractorModel extends EntityModel<TractorRenderState> {
         // 9. Rear 3-Point Hitch, Top Link & PTO Spline
         partdefinition.addOrReplaceChild("hitch",
                 CubeListBuilder.create()
-                        // Draft arms & drawbar (offset down and back to prevent coplanar z-fighting with chassis)
+                        // Draft arms & drawbar (clean 0.05F offset behind the rear axle face at Z=10.0F)
                         .texOffs(160, 90)
-                        .addBox(-3.0F, -4.5F, 10.02F, 6.0F, 1.8F, 5.0F)
+                        .addBox(-3.0F, -4.5F, 10.05F, 6.0F, 1.8F, 5.0F)
                         // PTO stub shaft
                         .texOffs(184, 90)
-                        .addBox(-1.0F, -6.5F, 10.02F, 2.0F, 1.8F, 2.0F)
+                        .addBox(-1.0F, -6.2F, 10.05F, 2.0F, 1.5F, 2.0F)
                         // Tow pin
                         .texOffs(184, 90)
                         .addBox(-0.5F, -6.0F, 13.5F, 1.0F, 3.8F, 1.0F),

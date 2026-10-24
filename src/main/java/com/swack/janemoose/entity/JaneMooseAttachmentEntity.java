@@ -160,11 +160,13 @@ public class JaneMooseAttachmentEntity extends Entity {
         public Component getDisplayName() {
             ItemStack stack = attachment.getItem();
             if (stack.getItem() instanceof IAttachment att) {
-                return switch (att.getType()) {
-                    case PLANTER -> Component.translatable("gui.janemoose.seed_hopper");
-                    case HARVESTER -> Component.translatable("gui.janemoose.grain_tank");
-                    case CULTIVATOR -> Component.translatable("gui.janemoose.tool_chest");
-                };
+                if (att.getType() == IAttachment.AttachmentType.PLANTER) {
+                    return Component.translatable("gui.janemoose.seed_hopper");
+                } else if (att.getType() == IAttachment.AttachmentType.HARVESTER) {
+                    return Component.translatable("gui.janemoose.grain_tank");
+                } else {
+                    return Component.translatable("gui.janemoose.tool_chest");
+                }
             }
             return Component.translatable("gui.janemoose.attachment_inventory");
         }
@@ -177,6 +179,7 @@ public class JaneMooseAttachmentEntity extends Entity {
         @Override
         public void writeClientSideData(AbstractContainerMenu menu, RegistryFriendlyByteBuf buf) {
             buf.writeInt(attachment.getId());
+            buf.writeInt(attachment.getSlotCount());
         }
     }
 
