@@ -1,67 +1,119 @@
-# Jane Moose 🚜
+# 🚜 Jane Moose 4020 — Diesel Machinery Mod
 
-> *"Nothing runs like a moose!"*
+<p align="center">
+  <img src="logo.png" alt="Jane Moose Logo" width="180"/>
+</p>
 
-A classic John Deere-inspired farm tractor mod for **Minecraft 26.3** on **NeoForge 26.3.0.48**.
+<p align="center">
+  <em>"Nothing runs like a moose!"</em>
+</p>
 
----
-
-## 🦌 Features
-
-- **Compact Size**: Built with a tight footprint (strictly within **2x2x2** blocks, approx 1.8m × 1.8m × 1.8m), allowing it to easily navigate farms, barn gates, and narrow crop rows.
-- **Diesel Powered**:
-  - Internal 10,000 mB fuel tank.
-  - Fully compatible with diesel fluids/items from other mods via `#c:diesel`, `#c:fuels/diesel`, and `#forge:diesel` item/fluid tags.
-  - Comes with a standalone **Diesel Canister** (+1,000 mB) and diesel crafting recipe so you can play immediately even before your dedicated fuel mod is loaded!
-  - Active exhaust smoke particles emit while the diesel engine is running.
-- **3-Point Rear Hitch System**:
-  - Accepts attachments hitched to the rear.
-  - Shift-right-click with an attachment to hitch it.
-  - Sneak-interact with empty hands or wrench to unhitch.
-  - Hitched attachments are rendered directly onto the tractor's rear 3-point hitch.
-- **Attachments & Tiers**:
-  1. **Cultivators** (Tills soil into farmland):
-     - **Wood Cultivator**: 1x1 width (single row).
-     - **Iron Cultivator**: 1x2 width (double row).
-     - **Diamond Cultivator**: 1x3 width (triple row).
-  2. **Harvesters** (Reaps mature crops, drops harvest, and auto-replants at age 0):
-     - **Wood Harvester**: 1x1 width.
-     - **Iron Harvester**: 1x2 width.
-     - **Diamond Harvester**: 1x3 width.
-  3. **Planters** (Draws seeds from rider inventory and plants onto farmland):
-     - **Wood Planter**: 1x1 width.
-     - **Iron Planter**: 1x2 width.
-     - **Diamond Planter**: 1x3 width.
-     - Compatible with Wheat, Carrots, Potatoes, Beetroots, Melons, Pumpkins, and Torchflowers!
-- **Jane Moose Mechanics Wrench**:
-  - Right-click the tractor to inspect current fuel levels and attached implements.
-  - Sneak-right-click to safely pick up the tractor into item form.
+<p align="center">
+  <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg" alt="Minecraft 26.3"/></a>
+  <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/NeoForge-26.3.0.48-orange.svg" alt="NeoForge 26.3"/></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.0.1-blue.svg" alt="Version 1.0.1"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT"/></a>
+</p>
 
 ---
 
-## 🛠️ Controls & Usage
+## 📖 Overview
 
-| Action | Control |
-|---|---|
-| **Mount Tractor** | Right-click tractor with empty hand |
-| **Dismount** | Sneak (Left Shift) |
-| **Drive / Steer** | Standard movement controls (`W`/`A`/`S`/`D` and mouse look) |
-| **Refuel** | Right-click tractor with Diesel Canister or diesel bucket |
-| **Hitch Attachment** | Right-click rear hitch or tractor while holding an attachment |
-| **Detach Attachment** | Sneak-right-click tractor with empty hand |
-| **Check Fuel / Status** | Right-click tractor with Jane Moose Wrench |
-| **Pack Up Tractor** | Sneak-right-click tractor with Jane Moose Wrench |
+**Jane Moose** brings authentic, heavy-duty American agricultural power to Minecraft with the vintage **Jane Moose Model 4020 Diesel Tractor** and modular 3-point hitch implement attachments. Featuring real-life farming physics, realistic diesel fueling, interactive custom GUIs, 2K photorealistic textures, and full **LabPBR 1.3 Parallax Occlusion Mapping (POM)** shader compatibility!
+
+---
+
+## 🌾 Features & Mechanics
+
+### 🚜 Jane Moose Model 4020 Tractor
+- **Authentic 4020 Silhouette**: Modeled after iconic American agricultural iron — featuring 16-faceted round wheels, front suitcase counterweights, graphite exhaust smokestack with rain flapper cap, cyclone pre-cleaner dome, contoured operator seat, ROPS canopy sunshade, and authentic yellow-striped green livery.
+- **Dynamic Torch-Level Headlights**: Real-world front illumination (Light Level 15) projecting a 15-block beam ahead of the tractor with adaptive slope, crop, and water avoidance (`LightBlock.WATERLOGGED`). Zero leftover phantom light blocks upon driving, unloading, or dismounting.
+- **Realistic Driving Physics**: Responsive forward/reverse throttle, true turning radii, hill climbing, and anti-trample soil preservation so tractor tires never destroy tilled farmland.
+- **Speed Governance**: Operates at 100% transport speed when traveling or unhitched; automatically throttled to 50% working speed when an implement is lowered and actively working.
+- **Diesel Fuel System**: Internal 10,000 mB fuel reservoir. Refuel via **Diesel Canisters** or compatible diesel buckets/fluids (`#c:diesel`, `#c:fuels/diesel`).
+- **Interactive Dashboard GUI**: Press `[C]` or sneak-right-click to monitor fuel levels, rename your tractor, toggle hydraulics, engage the engine, and switch headlights On/Off.
+
+### 🌾 3-Point Hitch Attachments & Tiers
+Attachments can be placed directly in the world as 3D entities by right-clicking, then hitched to the tractor's rear drawbar by reversing up to them.
+
+1. **Spring-Tooth Cultivator** *(Tills soil & grass into farmland)*:
+   - **Wood Cultivator**: 1-block working swath.
+   - **Iron Cultivator**: 2-block working swath.
+   - **Diamond Cultivator**: 3-block working swath.
+2. **Multi-Row Crop Planter** *(Sows seeds onto tilled farmland)*:
+   - Equipped with parallel linkage, tapered poly seed hoppers, and press wheels.
+   - Internal seed inventory (9, 18, or 27 slots depending on tier). Load Wheat, Carrot, Potato, Beetroot, or Pumpkin/Melon seeds to sow fields automatically.
+3. **Combine Grain Harvester** *(Reaps crops, auto-replants, gathers grain)*:
+   - Features rotating 4-bat pickup reel, double-knife sickle bar, and gathering auger.
+   - Automatically cuts mature crops, replants the base crop, and routes the harvested yield into its internal grain tank.
+
+---
+
+## 🎮 Controls & Keybindings
+
+All keybindings are fully rebindable in the standard Minecraft **Options > Controls > Key Binds** menu under the **Jane Moose Machinery** category:
+
+| Action | Default Key | Context | Description |
+| :--- | :---: | :---: | :--- |
+| **Drive / Steer** | `W / A / S / D` | Riding | Throttle forward/reverse, steer left/right. |
+| **Dismount** | `Left Shift` | Riding | Safely dismount the tractor. |
+| **Toggle Headlights** | `[L]` | Riding / GUI | Turn high-beam torch headlights **ON / OFF**. |
+| **Lift / Lower Hydraulics** | `[H]` or `Space` | Riding / GUI | Switch between **Transport Mode** (Raised) & **Working Mode** (Lowered). |
+| **Toggle Implement Power** | `[X]` | Riding / GUI | Engage / disengage the PTO implement mechanism. |
+| **Open Tractor Dashboard** | `[C]` | Riding / Stand | Access fuel status, rename box, and quick toggles. |
+| **Place Implement** | `Right-Click` | Handheld | Deploy 3D implement entity into world. |
+| **Hitch Implement** | Reverse near | Driving | Tractor auto-hitches when backing up to an implement. |
+| **Unhitch Implement** | `Shift + Right-Click` | Outside | Detach hitched implement using an empty hand or wrench. |
+| **Pack Up Tractor** | `Shift + Right-Click` | Outside (Wrench) | Retrieve tractor and attachments into inventory item form. |
+
+---
+
+## 🎨 Shaders & LabPBR POM Compatibility
+
+Jane Moose is engineered to look stunning with and without shaders:
+- **Vanilla**: High-contrast, clean 2K baked ambient occlusion textures.
+- **Shaderpacks (Iris, Oculus, Complementary, SEUS, Kappa)**: Full **LabPBR 1.3** specification.
+  - Tangent Normal & POM Height Maps (`_n.png`): Tire tread lugs, radiator honeycomb mesh, hood louvers, and diamond plate exhibit real 3D depth.
+  - Decal Preservation: "JANE MOOSE 4020" lettering and stripe decals are clamped to pure height `255` and flat normal `(128, 128, 255)`, guaranteeing crisp, zero-stepping text under parallax raymarching.
+  - Specular & Roughness Maps (`_s.png`): Distinct metallic reflections on chrome bezels, sheet metal paint gloss, and matte rubber tires.
+
+---
+
+## 📋 Changelog Summary
+
+### [v1.0.1] - 2026-10-24
+- **Dynamic Headlight Illumination**: Real-world torch light (Level 15) projected from front grille lenses ($1.85\text{m}$ forward, $Y+0.85$) with waterlogging and slope support.
+- **Assignable Keybinding**: Added `[L]` hotkey under `Jane Moose Machinery` to toggle headlights.
+- **Dashboard Headlight Button**: Integrated `Lights: ON / OFF` button on the tractor dashboard GUI.
+- **POM Shader Text Fix**: Resolved text scrambling and distortion under Parallax Occlusion Mapping shaders.
+- **Flicker-Free 3D Geometry**: Fixed Z-fighting on front grille, headlights, wheel rims, and rear chassis/hitch.
+- **Handheld Placement Fix**: Cultivators and implements deploy as 3D entities on right-click instead of tilling dirt.
+- **Crash Prevention**: Eliminated synthetic enum switch classes that caused `ZipException` / `ClassNotFoundException` when opening hopper inventories.
+
+*For the complete historical log, see [CHANGELOG.md](CHANGELOG.md).*
 
 ---
 
 ## ⚙️ Building from Source
 
-Requirements:
-- Java 21+ Development Kit (JDK 21 or 25)
-- Internet connection for initial dependency resolution
+### Prerequisites
+- **JDK 21** or newer (Eclipse Adoptium Temurin recommended)
+- Internet connection for initial NeoForge artifact resolution
 
-Run:
+### Compilation
 ```bash
-./gradlew build
+# Clone the repository
+git clone https://github.com/Swack/janemoose.git
+cd janemoose
+
+# Build with Gradle
+./gradlew build --no-daemon
 ```
 The compiled mod JAR will be located in `build/libs/janemoose-1.0.0.jar`.
+
+---
+
+## 📜 License & Modpack Permissions
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.  
+You are completely free to include **Jane Moose** in any public or private modpack!

@@ -38,16 +38,30 @@ All attachments come in **Wooden**, **Iron**, and **Diamond** tiers, with expand
 ---
 
 ## 🎮 Controls & Keybindings
-All tractor and attachment actions are fully rebindable in the standard Minecraft **Options > Controls > Key Binds** menu:
+All tractor and attachment actions are fully rebindable in the standard Minecraft **Options > Controls > Key Binds** menu under the **Jane Moose Machinery** category:
 
-| Action | Default Key | Description |
-| :--- | :--- | :--- |
-| **Drive / Steer** | `W / A / S / D` | Accelerate, steer left/right, and reverse |
-| **Hitch / Unhitch** | `Right-Click` (with Wrench) | Back up to an attachment and link it |
-| **Open Tractor GUI** | `Right-Click` (or GUI key) | View fuel gauge, tractor stats & insert diesel canisters |
-| **Open Implement GUI** | `Shift + Right-Click` | Access Planter seed hopper or Harvester grain tank |
-| **Lift / Lower Implement** | `Keybind` / GUI | Toggle between Transport mode and Working mode |
-| **Toggle Implement Power** | `Keybind` / GUI | Turn PTO mechanism On / Off |
+| Action | Default Key | Context | Description |
+| :--- | :---: | :---: | :--- |
+| **Drive / Steer** | `W / A / S / D` | Riding | Throttle forward/reverse, steer left/right. |
+| **Dismount** | `Left Shift` | Riding | Safely dismount the tractor. |
+| **Toggle Headlights** | `[L]` | Riding / GUI | Turn high-beam torch headlights **ON / OFF**. |
+| **Lift / Lower Implement** | `[H]` or `Space` | Riding / GUI | Toggle between **Transport Mode** (Raised) & **Working Mode** (Lowered). |
+| **Toggle Implement Power** | `[X]` | Riding / GUI | Engage / disengage PTO implement mechanism. |
+| **Open Tractor Dashboard** | `[C]` | Riding / Stand | Access fuel gauge, stats, rename box & quick toggles. |
+| **Open Implement GUI** | Dashboard Button | In GUI | Open Planter seed hopper or Harvester grain tank. |
+| **Place Implement** | `Right-Click` | Handheld | Deploy 3D implement entity into world. |
+| **Hitch Implement** | Reverse near | Driving | Tractor auto-hitches when backing up to an implement. |
+| **Unhitch Implement** | `Shift + Right-Click` | Outside | Detach hitched implement using an empty hand or wrench. |
+| **Pack Up Tractor** | `Shift + Right-Click` | Outside (Wrench) | Retrieve tractor and attachments into inventory item form. |
+
+---
+
+## 📢 Recent Updates (v1.0.1)
+- **Dynamic Headlights**: Working high-beam front headlights (Level 15 light) that light up fields at night.
+- **Dedicated Keybinds**: Toggle headlights with `[L]` or the new Dashboard GUI button.
+- **POM Shader Fix**: Fixed text scrambling on "JANE MOOSE 4020" when using Parallax Occlusion Mapping shaders.
+- **Flicker-Free Geometry**: Eliminated Z-fighting on grille, headlights, wheel rims, and rear chassis.
+- **Usability & Stability**: Implements place on right-click instead of tilling dirt; fixed hopper screen crash.
 
 ---
 
