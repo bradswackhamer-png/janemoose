@@ -1,0 +1,95 @@
+================================================================================
+JANE MOOSE (4020 DIESEL TRACTOR MOD) - COMPRESSED TECHNICAL BLUEPRINT
+================================================================================
+
+[PROJECT METADATA & ENVIRONMENT]
+- Mod ID: janemoose
+- Mod Name: Jane Moose
+- Version: 1.0.0
+- Authors: Swack
+- License: MIT
+- Target Engine: Minecraft 26.3 | NeoForge 26.3.0.48-beta
+- Java Version: JDK 21 (Adoptium 21.0.12.101-hotspot)
+- Build System: Gradle 8.10.2 via './gradlew.bat build --no-daemon'
+- Workspace: C:\Users\swack\Desktop\janemoose
+- Live Deployed Jar: C:\Users\swack\curseforge\minecraft\Instances\26.3\mods\janemoose-1.0.0.jar
+- Logo & Avatar: 512x512 PNG at src/main/resources/logo.png & ./logo.png (logoFile="logo.png" in neoforge.mods.toml)
+- CurseForge Overview: ./CURSEFORGE_PAGE.md
+
+--------------------------------------------------------------------------------
+[CODEBASE DIRECTORY MAP]
+com.swack.janemoose/
+  ├── JaneMooseMod.java               -> Main mod entry point, registers event listeners, deferred registers
+  ├── client/
+  │    ├── JaneMooseClient.java       -> Client mod bus subscriber (registers layers, renderers, keybinds, screens)
+  │    ├── JaneMooseKeyBinds.java     -> Custom keybindings (Lift/Lower, Toggle Power, Tractor GUI)
+  │    ├── model/
+  │    │    ├── TractorModel.java     -> 16-facet round wheels, suitcase weights, 4020 hood, ROPS canopy, 3-point hitch
+  │    │    └── AttachmentModel.java  -> Row units, combine header/auger/reel, spring-tooth shanks
+  │    └── renderer/
+  │         ├── TractorRenderer.java       -> Custom EntityRenderer with custom TractorRenderState
+  │         ├── TractorRenderState.java    -> Stores wheel rotation, pitch/yaw, fuel level, attachment link
+  │         ├── AttachmentRenderer.java    -> Attachment EntityRenderer with AttachmentRenderState
+  │         └── AttachmentRenderState.java -> Reel animation tick, isRaised, isActive, tier, type
+  ├── entity/
+  │    ├── JaneMooseTractorEntity.java    -> Vehicle physics, turning logic, fuel tank, hitching, no animal HP
+  │    └── JaneMooseAttachmentEntity.java -> Hitch target, cultivator, planter, harvester execution logic
+  ├── gui/
+  │    ├── TractorMenu.java / TractorScreen.java       -> Tractor fuel gauge, stats, diesel canister input
+  │    └── AttachmentMenu.java / AttachmentScreen.java -> Planter seed inventory & Harvester grain tank GUI
+  ├── item/
+  │    ├── TractorItem.java               -> Places tractor entity
+  │    ├── IAttachment.java               -> Base interface for attachment types and tiers
+  │    ├── CultivatorAttachmentItem.java  -> Spawns cultivator entity
+  │    ├── PlanterAttachmentItem.java     -> Spawns planter entity
+  │    ├── HarvesterAttachmentItem.java   -> Spawns harvester entity
+  │    ├── DieselCanisterItem.java        -> Refueling item (provides fuel ticks to tractor)
+  │    └── WrenchItem.java                -> Hitch/unhitch tool & repair wrench
+  ├── network/
+  │    ├── ModMessages.java           -> Packet registry (NeoForge CustomPacketPayload)
+  │    └── TractorActionPayload.java  -> Client-to-server action packet (LIFT_TOGGLE, POWER_TOGGLE, OPEN_MENU)
+  └── registry/
+       ├── ModCreativeTabs.java       -> Dedicated Jane Moose creative tab with custom icon
+       ├── ModEntities.java           -> TRACTOR & ATTACHMENT EntityTypes
+       ├── ModItems.java              -> All registered items and canisters
+       ├── ModMenus.java              -> TRACTOR_MENU & ATTACHMENT_MENU MenuTypes
+       └── ModSounds.java             -> Tractor engine idle, run, rev, and hitch sounds
+
+--------------------------------------------------------------------------------
+[KEY ARCHITECTURAL MECHANICS & LOGIC]
+
+1. TRACTOR VEHICLE & PHYSICS (JaneMooseTractorEntity):
+   - Steer via A/D keys (smooth yaw turning rate, no strafing).
+   - Throttle via W/S keys (smooth forward & reverse acceleration).
+   - Speed governance: Travels at 100% normal speed when transport/unhitched; throttled to 50% working speed when an attachment is lowered and actively working.
+   - Wheels: True 16-faceted round cylinders. Wheel spin animation only advances while vehicle is in motion; wheels lock when parked.
+   - Driver HUD: Standard horse/animal health bar removed by overriding rideable entity attributes so no false hearts appear.
+   - Fuel Mechanics: Diesel fuel consumption rate based on engine load; stalls when empty. Refueled using Diesel Canister via right-click or Tractor GUI.
+
+2. ATTACHMENTS & TIERS (JaneMooseAttachmentEntity):
+   - Hitch Mechanism: 3-point hitch connects when tractor reverses up to an attachment and right-clicks with Wrench.
+   - Mode States:
+     * Raised (Transport Mode): Implements lifted 8px above ground; tools disengage; no tractor speed penalty; visual animation pauses.
+     * Lowered (Working Mode): Implements touch ground; PTO engages; tractor speed set to 50%; tool active.
+   - Cultivator: Tills grass/dirt into fertile farmland (matches Hoe functionality); includes anti-trample soil preservation so tractor tires never trample tilled soil. No internal inventory needed.
+   - Planter: Real-world row units; contains 9-slot seed inventory; auto-plants seeds (wheat, carrot, potato, beetroot) onto farmland as tractor drives over.
+   - Harvester: Combine header with rotating 4-bat reel, sickle cutterbar, and cross-auger; breaks mature crops, replants seeds automatically, and routes gathered harvest into internal 9-slot grain tank.
+   - Swath Widths: Wood = 1 block; Iron = 3 blocks; Diamond = 5 blocks.
+
+3. 3D MODELS (TractorModel & AttachmentModel):
+   - Tractor: Authentically proportioned John Deere 4020 silhouette. Detailed 16-sided faceted wheels, front stacked suitcase weights, sloped nose cowl, radiator honeycomb mesh, dual chrome headlights, graphite smokestack with rain flapper cap, cyclone pre-cleaner dome, vinyl operator seat, ROPS canopy sunshade, and 3-point hitch lift arms.
+   - Planter: Multi-row units with parallel linkage bars, tapered poly seed hoppers with molded lids, double-disk furrow openers, depth gauge wheels, seed tubes, V-closing press wheels, and diamond-plate catwalk.
+   - Harvester: Steel header trough, double-knife sickle cutterbar with rock guards, outer torpedo crop dividers, center spiral auger drum, rotating 4-bat pickup reel with spring fingers, grain tank with viewing window, and side unloading auger tube.
+
+4. 2K PHOTOREALISTIC TEXTURING & LABPBR POM:
+   - 2048x2048 (2K) diffuse textures baked with ambient occlusion and brushed metal highlights.
+   - Tangent normal & height displacement maps (_n.png) and specular roughness/metallic maps (_s.png) generated in LabPBR standard.
+   - Full Parallax Occlusion Mapping (POM) depth on tire lugs, louvers, grille, and bolts with shader packs (Iris/Oculus/Complementary/SEUS).
+   - Hood Decals: "JANE MOOSE" (front-left) and "4020" (rear-right) on both left and right sides with guaranteed 30+ pixel clear spacing (no "DIESEL" collision).
+
+--------------------------------------------------------------------------------
+[CURRENT GOALS & STATUS]
+- Mod is 100% feature-complete, compiled, tested, and deployed to CurseForge mod directory.
+- 512x512 logo created and embedded in JAR as logoFile.
+- CURSEFORGE_PAGE.md ready for copy-pasting to CurseForge Authors portal for public release.
+================================================================================
