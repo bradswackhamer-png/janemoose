@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg" alt="Minecraft 26.3"/></a>
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/NeoForge-26.3.0.48-orange.svg" alt="NeoForge 26.3"/></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.0.1-blue.svg" alt="Version 1.0.1"/></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.0.2-blue.svg" alt="Version 1.0.2"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT"/></a>
 </p>
 
@@ -81,8 +81,13 @@ Jane Moose is engineered to look stunning with and without shaders:
 
 ## 📋 Changelog Summary
 
+### [v1.0.2] - 2026-10-24
+- **Fermentation Barrel Block**: 3D rounded oak barrel block with bulging bilge, iron hoops, and custom GUI.
+- **Wheat-to-Ethanol Conversion**: Automatically ferments 1 Wheat into 1 Bucket (1,000 mB) of Ethanol per 1 real-life minute (1,200 ticks).
+- **Ethanol Bucket Item**: Added `janemoose:ethanol_bucket` (+1,000 mB fuel, craftRemainder bucket) with `#c:ethanol` support.
+- **Dual-Fuel Engine**: Tractor accepts both Diesel and Ethanol biofuel in-world and in the Dashboard GUI.
+
 ### [v1.0.1] - 2026-10-24
-- **Ethanol Biofuel Support (Refinery Mod Integration)**: Added full support for refueling via Ethanol Buckets (`refinery:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`) both in-world and inside the Dashboard GUI.
 - **Dynamic Headlight Illumination**: Real-world torch light (Level 15) projected from front grille lenses ($1.85\text{m}$ forward, $Y+0.85$) with waterlogging and slope support.
 - **Assignable Keybinding**: Added `[L]` hotkey under `Jane Moose Machinery` to toggle headlights.
 - **Dashboard Headlight Button**: Integrated `Lights: ON / OFF` button on the tractor dashboard GUI.

@@ -5,14 +5,14 @@ JANE MOOSE (4020 DIESEL TRACTOR MOD) - COMPRESSED TECHNICAL BLUEPRINT
 [PROJECT METADATA & ENVIRONMENT]
 - Mod ID: janemoose
 - Mod Name: Jane Moose
-- Version: 1.0.0
+- Version: 1.0.2
 - Authors: Swack
 - License: MIT
 - Target Engine: Minecraft 26.3 | NeoForge 26.3.0.48-beta
 - Java Version: JDK 21 (Adoptium 21.0.12.101-hotspot)
 - Build System: Gradle 8.10.2 via './gradlew.bat build --no-daemon'
 - Workspace: C:\Users\swack\Desktop\janemoose
-- Live Deployed Jar: C:\Users\swack\curseforge\minecraft\Instances\26.3\mods\janemoose-1.0.0.jar
+- Live Deployed Jar: C:\Users\swack\curseforge\minecraft\Instances\26.3\mods\janemoose-1.0.2.jar
 - Logo & Avatar: 512x512 PNG at src/main/resources/logo.png & ./logo.png (logoFile="logo.png" in neoforge.mods.toml)
 - CurseForge Overview: ./CURSEFORGE_PAGE.md
 

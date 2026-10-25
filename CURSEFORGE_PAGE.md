@@ -56,13 +56,13 @@ All tractor and attachment actions are fully rebindable in the standard Minecraf
 
 ---
 
-## 📢 Recent Updates (v1.0.1)
-- **Ethanol Biofuel Support**: Full integration with the **Refinery** mod's Ethanol biofuel (`refinery:ethanol_bucket` & `#c:ethanol` tags).
-- **Dynamic Headlights**: Working high-beam front headlights (Level 15 light) that light up fields at night.
-- **Dedicated Keybinds**: Toggle headlights with `[L]` or the new Dashboard GUI button.
-- **POM Shader Fix**: Fixed text scrambling on "JANE MOOSE 4020" when using Parallax Occlusion Mapping shaders.
-- **Flicker-Free Geometry**: Eliminated Z-fighting on grille, headlights, wheel rims, and rear chassis.
-- **Usability & Stability**: Implements place on right-click instead of tilling dirt; fixed hopper screen crash.
+## 📢 Recent Updates (v1.0.2)
+- **Fermentation Barrel Block**: 3D rounded oak barrel block that slowly ferments 1 Wheat into 1 Bucket (1,000 mB) of Ethanol per 1 real-life minute.
+- **Ethanol Biofuel & Buckets**: Added `Ethanol Bucket` (+1,000 mB) and full integration with the **Refinery** mod (`#c:ethanol` tags).
+- **Dual-Fuel Engine**: Power your Jane Moose tractor with both Diesel and Ethanol biofuel.
+- **Dynamic Headlights (v1.0.1)**: Working high-beam front headlights (Level 15 light) that light up fields at night (hotkey: [L]).
+- **POM Shader Fix (v1.0.1)**: Fixed text scrambling on "JANE MOOSE 4020" when using Parallax Occlusion Mapping shaders.
+- **Flicker-Free Geometry (v1.0.1)**: Eliminated Z-fighting on grille, headlights, wheel rims, and rear chassis.
 
 ---
 

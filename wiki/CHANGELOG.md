@@ -4,13 +4,29 @@ Welcome to the **Jane Moose 4020** version archive. This page documents all majo
 
 ---
 
+## 🚜 [v1.0.2] — Fermentation Barrel & Ethanol Biofuel Update
+*Released on October 24, 2026*
+
+### ✨ New Features & Gameplay
+* **Fermentation Barrel Block**:
+  * Added a dedicated 3D rounded oak barrel block with bulging middle bilge, dual riveted iron hoops, and a top fermentation airlock.
+  * Interactive Custom GUI (`FermentationBarrelScreen`) with oak/brass styling, animated fermentation progress bar, 60-second countdown timer, and golden-amber Ethanol tank gauge ($8,000\text{ mB}$ capacity).
+  * Converts **Wheat** into **Ethanol Biofuel** at exactly **1 Bucket ($1,000\text{ mB}$) per 1 real-life minute** ($1,200\text{ ticks}$).
+  * Quick-draw support: right-click the barrel in the world with an empty bucket to instantly extract an Ethanol Bucket, or use the GUI input/output slots for automated bucket filling.
+  * Full automation: implements `WorldlyContainer` so hoppers and pipes can feed wheat and buckets into the barrel.
+  * Craftable in survival with planks, iron ingots, and a bucket.
+* **Ethanol Bucket Item**:
+  * Added `janemoose:ethanol_bucket` (+1,000 mB fuel, craftRemainder bucket), fully integrated with the `#c:ethanol` and `#c:fuels/ethanol` tags.
+* **Dual-Fuel Engine (Refinery Mod Integration)**:
+  * Tractor now accepts **Ethanol Biofuel** (`refinery:ethanol_bucket`, `janemoose:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`) alongside Diesel (`refinery:diesel_bucket`, `janemoose:diesel_canister`, `#c:diesel`).
+  * Complete closed-loop farming cycle: harvest crops with Jane Moose implements, ferment them into Ethanol, and power your tractor.
+
+---
+
 ## 🚜 [v1.0.1] — Dynamic Headlights & Shader Polish Update
 *Released on October 24, 2026*
 
 ### ✨ New Features & Gameplay
-* **Ethanol & Biofuel Integration (Refinery Mod Compatibility)**:
-  * Tractor now accepts **Ethanol Biofuel** (`refinery:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`) alongside Diesel (`refinery:diesel_bucket`, `janemoose:diesel_canister`, `#c:diesel`).
-  * Enables a complete farm-to-fuel gameplay loop: harvest crops with Jane Moose implements, ferment them into Ethanol in the Refinery mod's Industrial Fermenter, and refuel the tractor (+1,000 mB per bucket, returning the empty bucket).
 * **Dynamic Headlight Illumination**:
   * Front headlights now function as real high-beam illumination, casting a Level 15 light sphere across a 15-block radius in front of the tractor.
   * Emission origin is precisely aligned with the 3D model's dual grille headlights ($1.85$ blocks forward along heading vector, height $Y+0.85$).

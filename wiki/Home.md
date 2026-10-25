@@ -31,4 +31,4 @@ Welcome to the official documentation for **Jane Moose**, a classic heavy-duty A
 ---
 
 ## 📜 Recent Updates
-Check out the full [Version Changelog](CHANGELOG) for detailed patch notes on **v1.0.1** (Dynamic Headlights, POM Shader Scrambling Fix, and Z-Fighting Resolution).
+Check out the full [Version Changelog](CHANGELOG) for detailed patch notes on **v1.0.2** (Fermentation Barrel & Ethanol Biofuel) and **v1.0.1** (Dynamic Headlights & POM Shader Fix).
