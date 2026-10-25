@@ -56,6 +56,12 @@ All tractor and attachment actions are fully rebindable in the standard Minecraf
 
 ---
 
+## 📢 Recent Updates (v1.0.3)
+- **Realistic Jerry Can & Implement Icons Overhaul**:
+  - **Realistic Jerry Can (`diesel_canister.png`)**: Replaced flat placeholder texture with a 32x32 pressed-steel Industrial Yellow Jerry Can with stamped 3D "X" ribs, triple carry handles, brass cam-lock spout, and DIESEL hazard stencil.
+  - **32x32 Implements Overhaul**: Cultivators (A-frame hitch, C-shanks, duckfoot sweeps), Planters (seed hoppers, drop tubes, furrow opener coulters, packer wheels), and Harvesters (4-bat rotating reels, auger drum, divider snouts, sickle cutterbars) across Wood, Iron, and Diamond tiers.
+  - **Wrench & Tractor Icons**: Upgraded 32x32 chrome-vanadium mechanic's wrench and John Deere 4020 tractor profile icons.
+
 ## 📢 Recent Updates (v1.0.2)
 - **Fermentation Barrel Block**: 3D rounded oak barrel block that slowly ferments 1 Wheat into 1 Bucket (1,000 mB) of Ethanol per 1 real-life minute.
 - **Ethanol Biofuel & Buckets**: Added `Ethanol Bucket` (+1,000 mB) and full integration with the **Refinery** mod (`#c:ethanol` tags).

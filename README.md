@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg" alt="Minecraft 26.3"/></a>
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/NeoForge-26.3.0.48-orange.svg" alt="NeoForge 26.3"/></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.0.2-blue.svg" alt="Version 1.0.2"/></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.0.3-blue.svg" alt="Version 1.0.3"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT"/></a>
 </p>
 
@@ -80,6 +80,11 @@ Jane Moose is engineered to look stunning with and without shaders:
 ---
 
 ## 📋 Changelog Summary
+
+### [v1.0.3] - 2026-10-25
+- **Realistic Jerry Can (`diesel_canister.png`)**: Handcrafted 32x32 Industrial Machinery Yellow pressed-steel Jerry Can with stamped 3D "X" stiffening ribs, powder-coated triple carry handle, brass cam-lock spout, and black DIESEL hazard banner.
+- **High-Detail Implement Icons (32x32)**: Complete overhaul of all Cultivator, Planter, and Harvester icons across Wood, Iron, and Diamond tiers with true agricultural geometry (A-frame hitches, C-shanks, duckfoot sweeps, seed hoppers, coulter disks, 4-bat reels, and sickle cutterbars).
+- **Tool & Tractor Polish**: Upgraded 32x32 combination Mechanic's Wrench and John Deere 4020 tractor profile icons.
 
 ### [v1.0.2] - 2026-10-24
 - **Fermentation Barrel Block**: 3D rounded oak barrel block with bulging bilge, iron hoops, and custom GUI.

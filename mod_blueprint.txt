@@ -5,7 +5,7 @@ JANE MOOSE (4020 DIESEL TRACTOR MOD) - COMPRESSED TECHNICAL BLUEPRINT
 [PROJECT METADATA & ENVIRONMENT]
 - Mod ID: janemoose
 - Mod Name: Jane Moose
-- Version: 1.0.2
+- Version: 1.0.3
 - Authors: Swack
 - License: MIT
 - Target Engine: Minecraft 26.3 | NeoForge 26.3.0.48-beta

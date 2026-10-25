@@ -4,6 +4,39 @@ Welcome to the **Jane Moose 4020** version archive. This page documents all majo
 
 ---
 
+## 🚜 [v1.0.3] — Realistic Jerry Can & High-Detail Implement Icons Overhaul
+*Released on October 25, 2026*
+
+### 🎨 Art & Texture Overhaul
+* **Realistic Jerry Can (`diesel_canister.png`)**:
+  * Upgraded from flat placeholder square to an authentic 32x32 pressed-steel Jerry Can.
+  * Heavy-equipment Industrial Machinery Yellow finish with rolled perimeter weld seams.
+  * Stamped 3D "X" stiffening ribs with embossed highlights and deep shadow creases.
+  * Authentic triple-bar welded carry handles (black powder-coated steel) with open spacing.
+  * Angled pour spout / filler neck with brass cam-locking cap, retaining cotter pin, and right-hand breather screw.
+  * High-visibility black hazard banner with amber "DIESEL" stencil lettering.
+* **Agricultural Implement Icons (32x32 Overhaul)**:
+  * **Cultivators (`wooden_cultivator`, `iron_cultivator`, `diamond_cultivator`)**:
+    * Features 3-point hitch A-frame mounting bracket, structural toolbar frame, curved spring-steel C-shanks with coil spring mounts, and flared duckfoot sweep plow points.
+    * Wood: Treated oak timber beam with forged dark iron tines.
+    * Iron: Jane Moose green steel box beam with gold badge and polished steel chisel sweeps.
+    * Diamond: Armored cyan frame with wide 3-row wings and faceted gemstone sweeps.
+  * **Planters (`wooden_planter`, `iron_planter`, `diamond_planter`)**:
+    * Authentic row-crop planter silhouette: hitch toolbar, tapered seed hoppers with latching lids, flexible ribbed seed drop tubes, double-disk furrow opener coulters, and trailing V-closing press wheels.
+    * Wood: Single timber hopper box with iron band clamp.
+    * Iron: Twin Jane Moose green hoppers with combine yellow lids.
+    * Diamond: Triple hoppers with cyan inspection sight-glass windows and diamond coulters.
+  * **Harvesters (`wooden_harvester`, `iron_harvester`, `diamond_harvester`)**:
+    * Complete combine grain header silhouette: rotating 4-bat pickup reel with end star spiders, gathering cross-auger drum, outer crop divider snouts, and lower sickle cutterbar with rock guards and reciprocating triangular knife sections.
+    * Wood: Oak timber reel bats and wooden collection pan with iron sickle knife.
+    * Iron: Combine yellow 4-bat reel slats with green star spiders and sharp steel knives.
+    * Diamond: Cyan diamond-reinforced reel bats and sparkling diamond-edged cutter blades.
+* **Tool & Vehicle Icons**:
+  * **Mechanic's Wrench (`wrench.png`)**: Heavy combination wrench with 15° angled open-end jaw, 12-point box ring, and green comfort grip.
+  * **Jane Moose Tractor (`tractor.png`)**: John Deere 4020 silhouette with 16-facet chevron rear ag tires, yellow rims, green hood, dual headlights, operator seat, and chrome smokestack with rain flapper.
+
+---
+
 ## 🚜 [v1.0.2] — Fermentation Barrel & Ethanol Biofuel Update
 *Released on October 24, 2026*
 
