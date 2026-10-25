@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "janemoose:diesel_canister"
+    "janemoose:diesel_canister",
+    {
+      "id": "refinery:diesel_bucket",
+      "required": false
+    }
   ]
 }

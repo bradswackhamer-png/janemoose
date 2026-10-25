@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "janemoose:ethanol_bucket",
+    {
+      "id": "refinery:ethanol_bucket",
+      "required": false
+    }
+  ]
+}

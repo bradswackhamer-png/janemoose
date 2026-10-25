@@ -16,6 +16,12 @@ public class ModItems {
     public static final DeferredItem<DieselCanisterItem> DIESEL_CANISTER =
             ITEMS.registerItem("diesel_canister", DieselCanisterItem::new, p -> p.stacksTo(16));
 
+    public static final DeferredItem<EthanolBucketItem> ETHANOL_BUCKET =
+            ITEMS.registerItem("ethanol_bucket", EthanolBucketItem::new, p -> p.stacksTo(1).craftRemainder(net.minecraft.world.item.Items.BUCKET));
+
+    public static final DeferredItem<net.minecraft.world.item.BlockItem> FERMENTATION_BARREL =
+            ITEMS.registerSimpleBlockItem("fermentation_barrel", ModBlocks.FERMENTATION_BARREL);
+
     public static final DeferredItem<WrenchItem> WRENCH =
             ITEMS.registerItem("wrench", WrenchItem::new, p -> p.stacksTo(1));
 

@@ -30,7 +30,7 @@
 - **Dynamic Torch-Level Headlights**: Real-world front illumination (Light Level 15) projecting a 15-block beam ahead of the tractor with adaptive slope, crop, and water avoidance (`LightBlock.WATERLOGGED`). Zero leftover phantom light blocks upon driving, unloading, or dismounting.
 - **Realistic Driving Physics**: Responsive forward/reverse throttle, true turning radii, hill climbing, and anti-trample soil preservation so tractor tires never destroy tilled farmland.
 - **Speed Governance**: Operates at 100% transport speed when traveling or unhitched; automatically throttled to 50% working speed when an implement is lowered and actively working.
-- **Diesel Fuel System**: Internal 10,000 mB fuel reservoir. Refuel via **Diesel Canisters** or compatible diesel buckets/fluids (`#c:diesel`, `#c:fuels/diesel`).
+- **Dual-Fuel Engine (Diesel & Ethanol Biofuel)**: Internal 10,000 mB fuel reservoir. Refuel via **Diesel Canisters**, **Ethanol Buckets** from the **Refinery** mod (`refinery:ethanol_bucket`), or any compatible fuel item (`#c:diesel`, `#c:fuels/diesel`, `#c:ethanol`, `#c:fuels/ethanol`). Creates a self-sustaining agricultural biofuel loop!
 - **Interactive Dashboard GUI**: Press `[C]` or sneak-right-click to monitor fuel levels, rename your tractor, toggle hydraulics, engage the engine, and switch headlights On/Off.
 
 ### 🌾 3-Point Hitch Attachments & Tiers
@@ -82,6 +82,7 @@ Jane Moose is engineered to look stunning with and without shaders:
 ## 📋 Changelog Summary
 
 ### [v1.0.1] - 2026-10-24
+- **Ethanol Biofuel Support (Refinery Mod Integration)**: Added full support for refueling via Ethanol Buckets (`refinery:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`) both in-world and inside the Dashboard GUI.
 - **Dynamic Headlight Illumination**: Real-world torch light (Level 15) projected from front grille lenses ($1.85\text{m}$ forward, $Y+0.85$) with waterlogging and slope support.
 - **Assignable Keybinding**: Added `[L]` hotkey under `Jane Moose Machinery` to toggle headlights.
 - **Dashboard Headlight Button**: Integrated `Lights: ON / OFF` button on the tractor dashboard GUI.

@@ -46,6 +46,7 @@ public class JaneMooseClient {
     private static void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.TRACTOR_MENU.get(), TractorScreen::new);
         event.register(ModMenus.ATTACHMENT_MENU.get(), com.swack.janemoose.gui.AttachmentScreen::new);
+        event.register(ModMenus.FERMENTATION_BARREL_MENU.get(), com.swack.janemoose.gui.FermentationBarrelScreen::new);
     }
 
     @SubscribeEvent

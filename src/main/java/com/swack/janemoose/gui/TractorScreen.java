@@ -151,7 +151,7 @@ public class TractorScreen extends AbstractContainerScreen<TractorMenu> {
         int maxFuel = this.menu.getMaxFuel();
         float fuelPct = (maxFuel > 0) ? (float) fuel / maxFuel : 0.0F;
 
-        extractor.text(this.font, "Diesel Tank:", left + 8, top + 34, 0xFFCCCCCC);
+        extractor.text(this.font, "Fuel Tank:", left + 8, top + 34, 0xFFCCCCCC);
         extractor.text(this.font, fuel + " / " + maxFuel + " mB", left + 80, top + 34, 0xFFFFDE00);
 
         // Fuel gauge bar

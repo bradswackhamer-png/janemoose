@@ -13,10 +13,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -302,16 +304,20 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
             }
         }
 
-        // Generic Diesel Fuel Bucket / item from another mod
-        if (isDieselFuel(heldItem)) {
+        // Generic Fuel (Diesel, Ethanol, Biofuel) from Refinery, Jane Moose, or other mods
+        if (isFuel(heldItem)) {
             if (getFuel() < MAX_FUEL) {
-                if (!this.level().isClientSide()) {
+                if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
                     setFuel(getFuel() + 1000);
                     if (!player.isCreative()) {
-                        if (heldItem.is(Items.BUCKET) || heldItem.getItem().toString().toLowerCase().contains("bucket")) {
-                            player.setItemInHand(hand, new ItemStack(Items.BUCKET));
-                        } else {
-                            heldItem.shrink(1);
+                        ItemStack remainder = getEmptyContainer(heldItem);
+                        heldItem.shrink(1);
+                        if (!remainder.isEmpty()) {
+                            if (heldItem.isEmpty()) {
+                                player.setItemInHand(hand, remainder);
+                            } else if (!player.getInventory().add(remainder)) {
+                                this.spawnAtLocation(serverLevel, remainder);
+                            }
                         }
                     }
                     this.level().playSound(null, this.blockPosition(), SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.0F);
@@ -361,10 +367,28 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
         return InteractionResult.SUCCESS;
     }
 
-    private boolean isDieselFuel(ItemStack stack) {
+    public static boolean isFuel(ItemStack stack) {
         if (stack.isEmpty()) return false;
+        if (stack.getItem() instanceof DieselCanisterItem) return true;
+        if (stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "diesel"))) ||
+            stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "fuels/diesel"))) ||
+            stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "ethanol"))) ||
+            stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "fuels/ethanol")))) {
+            return true;
+        }
         String name = stack.getItem().toString().toLowerCase();
-        return name.contains("diesel");
+        return name.contains("diesel") || name.contains("ethanol") || name.contains("biofuel");
+    }
+
+    public static ItemStack getEmptyContainer(ItemStack stack) {
+        String name = stack.getItem().toString().toLowerCase();
+        if (stack.is(Items.BUCKET) || name.contains("bucket") || stack.getItem() instanceof net.minecraft.world.item.BucketItem) {
+            return new ItemStack(Items.BUCKET);
+        }
+        if (stack.is(Items.GLASS_BOTTLE) || name.contains("bottle")) {
+            return new ItemStack(Items.GLASS_BOTTLE);
+        }
+        return ItemStack.EMPTY;
     }
 
     private void dropAttachment(ServerLevel serverLevel) {

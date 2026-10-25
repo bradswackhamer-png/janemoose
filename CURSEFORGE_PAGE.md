@@ -11,7 +11,7 @@ Jane Moose brings authentic, heavy-duty agricultural power to Minecraft with the
 ### 🚜 Jane Moose 4020 Diesel Tractor
 * **Iconic Vintage Styling**: Modeled after classic American agricultural iron — featuring 16-faceted round wheels, front suitcase counterweights, graphite exhaust smokestack with rain flapper cap, cyclone pre-cleaner dome, contoured vinyl operator seat, ROPS canopy sunshade, and authentic yellow-striped green livery.
 * **Realistic Vehicle Physics**: Smooth acceleration, realistic turning radii, hill climbing, and full driver seating.
-* **Diesel Fuel Engine System**: Runs on refined diesel fuel canisters. Monitor your fuel level and engine temperature live via the tractor's custom dashboard instrument cluster.
+* **Dual-Fuel Engine System (Diesel & Ethanol)**: Runs on refined diesel fuel canisters as well as **Ethanol Biofuel** (`refinery:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`) from the **Refinery** mod! Harvest your crops, ferment them into ethanol, and power your tractor in a complete farm-to-fuel loop. Monitor your fuel level live via the custom dashboard instrument cluster.
 * **Working 3-Point Hitch**: Back up to any Jane Moose implement to hitch it directly to your tractor's drawbar.
 
 ---
@@ -57,6 +57,7 @@ All tractor and attachment actions are fully rebindable in the standard Minecraf
 ---
 
 ## 📢 Recent Updates (v1.0.1)
+- **Ethanol Biofuel Support**: Full integration with the **Refinery** mod's Ethanol biofuel (`refinery:ethanol_bucket` & `#c:ethanol` tags).
 - **Dynamic Headlights**: Working high-beam front headlights (Level 15 light) that light up fields at night.
 - **Dedicated Keybinds**: Toggle headlights with `[L]` or the new Dashboard GUI button.
 - **POM Shader Fix**: Fixed text scrambling on "JANE MOOSE 4020" when using Parallax Occlusion Mapping shaders.

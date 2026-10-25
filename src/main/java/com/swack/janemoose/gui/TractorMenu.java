@@ -69,11 +69,11 @@ public class TractorMenu extends AbstractContainerMenu {
         checkContainerSize(container, 2);
         checkContainerDataCount(data, 6);
 
-        // Slot 0: Fuel Input
+        // Slot 0: Fuel Input (Diesel, Ethanol, Biofuel)
         this.addSlot(new Slot(container, 0, 80, 52) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.getItem() instanceof DieselCanisterItem || isDiesel(stack);
+                return JaneMooseTractorEntity.isFuel(stack);
             }
         });
 
@@ -106,12 +106,6 @@ public class TractorMenu extends AbstractContainerMenu {
             return t;
         }
         return null;
-    }
-
-    private static boolean isDiesel(ItemStack stack) {
-        if (stack.isEmpty()) return false;
-        String name = stack.getItem().toString().toLowerCase();
-        return name.contains("diesel");
     }
 
     public JaneMooseTractorEntity getTractor() {
@@ -162,9 +156,8 @@ public class TractorMenu extends AbstractContainerMenu {
                         input.shrink(1);
                         this.tractor.level().playSound(null, this.tractor.blockPosition(), SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 1.0F, 1.0F);
                     }
-                } else if (isDiesel(input)) {
-                    ItemStack returnItem = input.is(Items.BUCKET) || input.getItem().toString().toLowerCase().contains("bucket") ?
-                            new ItemStack(Items.BUCKET) : ItemStack.EMPTY;
+                } else if (JaneMooseTractorEntity.isFuel(input)) {
+                    ItemStack returnItem = JaneMooseTractorEntity.getEmptyContainer(input);
 
                     if (returnItem.isEmpty() || output.isEmpty() || (ItemStack.isSameItemSameComponents(output, returnItem) && output.getCount() < output.getMaxStackSize())) {
                         this.tractor.setFuel(this.tractor.getFuel() + 1000);

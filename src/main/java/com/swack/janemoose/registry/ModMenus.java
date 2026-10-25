@@ -2,10 +2,12 @@ package com.swack.janemoose.registry;
 
 import com.swack.janemoose.JaneMooseMod;
 import com.swack.janemoose.gui.AttachmentMenu;
+import com.swack.janemoose.gui.FermentationBarrelMenu;
 import com.swack.janemoose.gui.TractorMenu;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -26,4 +28,7 @@ public class ModMenus {
 
     public static final DeferredHolder<MenuType<?>, MenuType<AttachmentMenu>> ATTACHMENT_MENU =
             MENUS.register("attachment_inventory", () -> IMenuTypeExtension.create(AttachmentMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<FermentationBarrelMenu>> FERMENTATION_BARREL_MENU =
+            MENUS.register("fermentation_barrel", () -> new MenuType<>(FermentationBarrelMenu::new, FeatureFlags.DEFAULT_FLAGS));
 }

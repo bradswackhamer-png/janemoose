@@ -20,6 +20,10 @@ JANE MOOSE (4020 DIESEL TRACTOR MOD) - COMPRESSED TECHNICAL BLUEPRINT
 [CODEBASE DIRECTORY MAP]
 com.swack.janemoose/
   ├── JaneMooseMod.java               -> Main mod entry point, registers event listeners, deferred registers
+  ├── block/
+  │    ├── FermentationBarrelBlock.java       -> 3D rounded octagonal barrel block, quick bucket extraction, airlock bubble animation
+  │    └── entity/
+  │         └── FermentationBarrelBlockEntity.java -> Fermentation engine (1 Wheat -> 1,000 mB Ethanol per 60s), auto-bucket fill, 8B tank
   ├── client/
   │    ├── JaneMooseClient.java       -> Client mod bus subscriber (registers layers, renderers, keybinds, screens)
   │    ├── JaneMooseKeyBinds.java     -> Custom keybindings (Lift/Lower [H], Toggle Power [X], Toggle Headlights [L], Tractor GUI [C])
@@ -35,8 +39,9 @@ com.swack.janemoose/
   │    ├── JaneMooseTractorEntity.java    -> Vehicle physics, turning logic, fuel tank, hitching, real-world headlight illumination, no animal HP
   │    └── JaneMooseAttachmentEntity.java -> Hitch target, cultivator, planter, harvester execution logic
   ├── gui/
-  │    ├── TractorMenu.java / TractorScreen.java       -> Tractor fuel gauge, stats, diesel canister input, headlight & hopper buttons
-  │    └── AttachmentMenu.java / AttachmentScreen.java -> Planter seed inventory & Harvester grain tank GUI
+  │    ├── TractorMenu.java / TractorScreen.java                         -> Tractor fuel gauge, stats, diesel/ethanol input, headlight & hopper buttons
+  │    ├── AttachmentMenu.java / AttachmentScreen.java                   -> Planter seed inventory & Harvester grain tank GUI
+  │    └── FermentationBarrelMenu.java / FermentationBarrelScreen.java   -> Oak & brass barrel GUI, wheat slot, animated timer & fluid gauge, bucket slots
   ├── item/
   │    ├── TractorItem.java               -> Places tractor entity directly on right-click
   │    ├── IAttachment.java               -> Base interface for attachment types and tiers
@@ -44,15 +49,18 @@ com.swack.janemoose/
   │    ├── PlanterAttachmentItem.java     -> Places planter entity directly on right-click
   │    ├── HarvesterAttachmentItem.java   -> Places harvester entity directly on right-click
   │    ├── DieselCanisterItem.java        -> Refueling item (provides fuel ticks to tractor)
+  │    ├── EthanolBucketItem.java         -> Refined ethanol biofuel bucket item (+1,000 mB)
   │    └── WrenchItem.java                -> Hitch/unhitch tool & repair wrench
   ├── network/
   │    ├── ModMessages.java           -> Packet registry (NeoForge CustomPacketPayload)
   │    └── TractorActionPayload.java  -> Client-to-server action packet (LIFT_TOGGLE, POWER_TOGGLE, OPEN_MENU, OPEN_ATTACHMENT_GUI, TOGGLE_LIGHTS)
   └── registry/
+       ├── ModBlocks.java             -> FERMENTATION_BARREL block registration
+       ├── ModBlockEntities.java      -> FERMENTATION_BARREL_BE block entity registration
        ├── ModCreativeTabs.java       -> Dedicated Jane Moose creative tab with custom icon
        ├── ModEntities.java           -> TRACTOR & ATTACHMENT EntityTypes
-       ├── ModItems.java              -> All registered items and canisters
-       ├── ModMenus.java              -> TRACTOR_MENU & ATTACHMENT_MENU MenuTypes
+       ├── ModItems.java              -> All registered items, canisters, and barrel block item
+       ├── ModMenus.java              -> TRACTOR_MENU, ATTACHMENT_MENU, & FERMENTATION_BARREL_MENU MenuTypes
        └── ModSounds.java             -> Tractor engine idle, run, rev, and hitch sounds
 
 --------------------------------------------------------------------------------
@@ -64,7 +72,7 @@ com.swack.janemoose/
    - Speed governance: Travels at 100% normal speed when transport/unhitched; throttled to 50% working speed when an attachment is lowered and actively working.
    - Wheels: True 16-faceted round cylinders. Wheel spin animation only advances while vehicle is in motion; wheels lock when parked.
    - Driver HUD: Standard horse/animal health bar removed by overriding rideable entity attributes so no false hearts appear.
-   - Fuel Mechanics: Diesel fuel consumption rate based on engine load; stalls when empty. Refueled using Diesel Canister via right-click or Tractor GUI.
+   - Fuel Mechanics: Dual-fuel engine supporting both Diesel (`janemoose:diesel_canister`, `refinery:diesel_bucket`, `#c:diesel`) and Ethanol biofuel (`refinery:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`). Consumes fuel based on engine load; stalls when empty. Refueled via right-click or Tractor GUI (+1,000 mB per canister/bucket, returning empty buckets).
 
 2. ATTACHMENTS & TIERS (JaneMooseAttachmentEntity):
    - Placement: Holding any attachment item (Cultivator, Planter, Harvester) and right-clicking any block immediately places the 3D entity on the ground.
@@ -100,4 +108,9 @@ com.swack.janemoose/
    - Illumination Origin: Dynamic server-side light source (Level 15 invisible Blocks.LIGHT) placed 1.85m in front of tractor along the yaw forward vector at Y+0.85 (headlight height), illuminating a 15-block radius directly in front of the grille.
    - Adaptive Placement: Automatically checks open air, water (with LightBlock.WATERLOGGED support), or elevated terrain so illumination never clips inside solid terrain.
    - Full Lifecycle Cleanup: Light block moves smoothly as tractor drives, clears immediately when toggled OFF, unhitched, discarded, picked up, or unloaded, leaving zero phantom light blocks in the world.
+
+7. FERMENTATION BARREL & ETHANOL BIOFUEL LOOP:
+   - 3D Rounded Block Geometry: Custom 8-sided rounded oak staves with bulging bilge, dual riveted iron hoops, recessed top/bottom chime heads, and front brass tap.
+   - Fermentation Rate: Converts 1 Wheat -> 1,000 mB (1 Bucket) of Ethanol over exactly 1,200 ticks (60.0 seconds = 1 real-life minute), trickle-filling +5 mB every 6 ticks into an 8,000 mB internal tank.
+   - Dual Extraction: Right-click barrel with an Empty Bucket to instantly draw a bucket, or place buckets in GUI Slot 1 to auto-fill into Slot 2. Full hopper/pipe automation via WorldlyContainer.
 ================================================================================

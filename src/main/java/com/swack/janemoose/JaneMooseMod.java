@@ -3,6 +3,8 @@ package com.swack.janemoose;
 import com.swack.janemoose.client.JaneMooseClient;
 import com.swack.janemoose.entity.JaneMooseAttachmentEntity;
 import com.swack.janemoose.entity.JaneMooseTractorEntity;
+import com.swack.janemoose.registry.ModBlockEntities;
+import com.swack.janemoose.registry.ModBlocks;
 import com.swack.janemoose.registry.ModCreativeTabs;
 import com.swack.janemoose.registry.ModEntities;
 import com.swack.janemoose.registry.ModItems;
@@ -29,6 +31,8 @@ public class JaneMooseMod {
     public JaneMooseMod(IEventBus modEventBus) {
         LOGGER.info("Initializing Jane Moose - Nothing runs like a moose!");
 
+        ModBlocks.BLOCKS.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
