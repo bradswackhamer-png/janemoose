@@ -13,5 +13,10 @@ public class ModMessages {
                 TractorActionPayload.STREAM_CODEC,
                 TractorActionPayload::handle
         );
+        registrar.playToServer(
+                BucketTruckActionPayload.TYPE,
+                BucketTruckActionPayload.STREAM_CODEC,
+                BucketTruckActionPayload::handle
+        );
     }
 }

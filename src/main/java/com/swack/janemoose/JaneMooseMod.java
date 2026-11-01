@@ -2,6 +2,8 @@ package com.swack.janemoose;
 
 import com.swack.janemoose.client.JaneMooseClient;
 import com.swack.janemoose.entity.JaneMooseAttachmentEntity;
+import com.swack.janemoose.entity.JaneMooseBucketPlatformEntity;
+import com.swack.janemoose.entity.JaneMooseBucketTruckEntity;
 import com.swack.janemoose.entity.JaneMooseTractorEntity;
 import com.swack.janemoose.registry.ModBlockEntities;
 import com.swack.janemoose.registry.ModBlocks;
@@ -57,14 +59,16 @@ public class JaneMooseMod {
 
     private void entityAttributes(final EntityAttributeCreationEvent event) {
         event.put(ModEntities.TRACTOR.get(), JaneMooseTractorEntity.createAttributes().build());
+        event.put(ModEntities.BUCKET_TRUCK.get(), JaneMooseBucketTruckEntity.createAttributes().build());
     }
 
     @SubscribeEvent
     public static void onFarmlandTrample(BlockEvent.FarmlandTrampleEvent event) {
         Entity entity = event.getEntity();
-        if (entity instanceof JaneMooseTractorEntity || entity instanceof JaneMooseAttachmentEntity) {
+        if (entity instanceof JaneMooseTractorEntity || entity instanceof JaneMooseAttachmentEntity
+                || entity instanceof JaneMooseBucketTruckEntity || entity instanceof JaneMooseBucketPlatformEntity) {
             event.setCanceled(true);
-        } else if (entity != null && entity.getVehicle() instanceof JaneMooseTractorEntity) {
+        } else if (entity != null && (entity.getVehicle() instanceof JaneMooseTractorEntity || entity.getVehicle() instanceof JaneMooseBucketTruckEntity)) {
             event.setCanceled(true);
         }
     }

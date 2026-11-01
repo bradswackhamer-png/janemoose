@@ -2,6 +2,8 @@ package com.swack.janemoose.registry;
 
 import com.swack.janemoose.JaneMooseMod;
 import com.swack.janemoose.entity.JaneMooseAttachmentEntity;
+import com.swack.janemoose.entity.JaneMooseBucketPlatformEntity;
+import com.swack.janemoose.entity.JaneMooseBucketTruckEntity;
 import com.swack.janemoose.entity.JaneMooseTractorEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -35,4 +37,24 @@ public class ModEntities {
                     .clientTrackingRange(10)
                     .updateInterval(3)
                     .build(ATTACHMENT_KEY));
+
+    public static final ResourceKey<EntityType<?>> BUCKET_TRUCK_KEY =
+            ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JaneMooseMod.MOD_ID, "bucket_truck"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<JaneMooseBucketTruckEntity>> BUCKET_TRUCK =
+            ENTITIES.register("bucket_truck", () -> EntityType.Builder.<JaneMooseBucketTruckEntity>of(JaneMooseBucketTruckEntity::new, MobCategory.MISC)
+                    .sized(1.9F, 1.9F)
+                    .clientTrackingRange(10)
+                    .updateInterval(3)
+                    .build(BUCKET_TRUCK_KEY));
+
+    public static final ResourceKey<EntityType<?>> BUCKET_PLATFORM_KEY =
+            ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JaneMooseMod.MOD_ID, "bucket_platform"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<JaneMooseBucketPlatformEntity>> BUCKET_PLATFORM =
+            ENTITIES.register("bucket_platform", () -> EntityType.Builder.<JaneMooseBucketPlatformEntity>of(JaneMooseBucketPlatformEntity::new, MobCategory.MISC)
+                    .sized(1.1F, 0.35F)
+                    .clientTrackingRange(10)
+                    .updateInterval(1)
+                    .build(BUCKET_PLATFORM_KEY));
 }

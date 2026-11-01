@@ -2,6 +2,7 @@ package com.swack.janemoose.registry;
 
 import com.swack.janemoose.JaneMooseMod;
 import com.swack.janemoose.gui.AttachmentMenu;
+import com.swack.janemoose.gui.BucketTruckMenu;
 import com.swack.janemoose.gui.FermentationBarrelMenu;
 import com.swack.janemoose.gui.TractorMenu;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -22,6 +23,9 @@ public class ModMenus {
 
     public static final DeferredHolder<MenuType<?>, MenuType<TractorMenu>> TRACTOR_MENU =
             MENUS.register("tractor_dashboard", () -> IMenuTypeExtension.create(TractorMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<BucketTruckMenu>> BUCKET_TRUCK_MENU =
+            MENUS.register("bucket_truck_dashboard", () -> IMenuTypeExtension.create(BucketTruckMenu::new));
 
     public static final ResourceKey<MenuType<?>> ATTACHMENT_MENU_KEY =
             ResourceKey.create(net.minecraft.core.registries.Registries.MENU, Identifier.fromNamespaceAndPath(JaneMooseMod.MOD_ID, "attachment_inventory"));

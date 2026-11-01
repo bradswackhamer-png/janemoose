@@ -2,6 +2,22 @@
 
 All notable changes to the Jane Moose mod will be documented in this file.
 
+## [1.1.0] - 2026-11-01
+
+### Added
+- **Jane Moose GKZ-14 Aerial Bucket / Platform Truck (`janemoose:bucket_truck`)**:
+  - Added a rideable cab-over-engine (COE) aerial work platform / bucket truck inspired by the XCMG GKZ14 and Skyjack aerial work platforms.
+  - Features a white COE utility cab with tinted windshield, side mirrors, front bumper with fog lamps, flatbed utility deck with DOT red-and-white reflective hazard stripes, underbody control cabinet with green LED indicators, 4 automatic hydraulic outrigger stabilizer legs with amber strobe beacons, rotating rear turret with operator seat, 2-stage articulated boom (`lower_boom`, `upper_boom`), telescoping inner `fly_boom`, and a self-leveling enclosed aerial work bucket/platform.
+  - **3-Speed Transmission (`1 m/s`, `2 m/s`, `3 m/s`)**: Shift between Gear 1 (`1 m/s`), Gear 2 (`2 m/s`), and Gear 3 (`3 m/s`) via the `[G]` keybind or the Dashboard GUI button.
+  - **Dual Operating Seats (Cab & Aerial Bucket) + Solid Walkable Platform (`janemoose:bucket_platform`)**:
+    - Sit inside the front **Driver Cab** or the elevated **Aerial Bucket** to perform actions (mine, build, use tools, or drive/reposition at 1/2/3 m/s).
+    - Right-click the rear/bucket platform directly to sit in the aerial bucket, or press `[B]` (or use the Dashboard GUI button) while riding to switch between the **Driver Cab** and the **Aerial Bucket**.
+    - Dismounting (`Left Shift`) while in the aerial bucket places you directly on the solid aerial bucket floor (`JaneMooseBucketPlatformEntity`) so you can stand and crouch in mid-air up to ~8 meters above the ground.
+  - **Dedicated Raise & Lower Boom Hotkeys**: Separate assignable keybinds for **Raise Bucket Truck Boom** (`[R]`) and **Lower Bucket Truck Boom** (`[V]`), plus boom lift and turntable rotation buttons in the Bucket Truck Dashboard GUI (`BucketTruckScreen`).
+  - **2K LabPBR 1.3 Textures & 32x32 Item Icon**: Added `bucket_truck.png`, `bucket_truck_n.png` (normal + POM height map), `bucket_truck_s.png` (specular map), `textures/item/bucket_truck.png`, and survival crafting recipe (`data/janemoose/recipe/bucket_truck.json`).
+
+---
+
 ## [1.0.3] - 2026-10-25
 
 ### Added & Overhauled

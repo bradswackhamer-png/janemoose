@@ -9,9 +9,12 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS =
             DeferredRegister.createItems(JaneMooseMod.MOD_ID);
 
-    // Tractor & Tools
+    // Tractor, Bucket Truck & Tools
     public static final DeferredItem<TractorItem> TRACTOR =
             ITEMS.registerItem("tractor", TractorItem::new, p -> p.stacksTo(1));
+
+    public static final DeferredItem<BucketTruckItem> BUCKET_TRUCK =
+            ITEMS.registerItem("bucket_truck", BucketTruckItem::new, p -> p.stacksTo(1));
 
     public static final DeferredItem<DieselCanisterItem> DIESEL_CANISTER =
             ITEMS.registerItem("diesel_canister", DieselCanisterItem::new, p -> p.stacksTo(16));

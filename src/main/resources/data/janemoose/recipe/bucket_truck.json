@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " P ",
+    "WEW",
+    "CIC"
+  ],
+  "key": {
+    "P": "minecraft:piston",
+    "W": "minecraft:white_wool",
+    "E": "minecraft:blast_furnace",
+    "I": "minecraft:iron_block",
+    "C": "minecraft:coal_block"
+  },
+  "result": {
+    "id": "janemoose:bucket_truck"
+  }
+}

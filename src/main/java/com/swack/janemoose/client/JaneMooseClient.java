@@ -1,10 +1,15 @@
 package com.swack.janemoose.client;
 
 import com.swack.janemoose.client.model.AttachmentModel;
+import com.swack.janemoose.client.model.BucketTruckModel;
 import com.swack.janemoose.client.model.TractorModel;
 import com.swack.janemoose.client.renderer.AttachmentRenderer;
+import com.swack.janemoose.client.renderer.BucketPlatformRenderer;
+import com.swack.janemoose.client.renderer.BucketTruckRenderer;
 import com.swack.janemoose.client.renderer.TractorRenderer;
+import com.swack.janemoose.entity.JaneMooseBucketTruckEntity;
 import com.swack.janemoose.entity.JaneMooseTractorEntity;
+import com.swack.janemoose.gui.BucketTruckScreen;
 import com.swack.janemoose.gui.TractorScreen;
 import com.swack.janemoose.registry.ModEntities;
 import com.swack.janemoose.registry.ModMenus;
@@ -32,11 +37,14 @@ public class JaneMooseClient {
     private static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(TractorModel.LAYER_LOCATION, TractorModel::createBodyLayer);
         event.registerLayerDefinition(AttachmentModel.LAYER_LOCATION, AttachmentModel::createBodyLayer);
+        event.registerLayerDefinition(BucketTruckModel.LAYER_LOCATION, BucketTruckModel::createBodyLayer);
     }
 
     private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.TRACTOR.get(), TractorRenderer::new);
         event.registerEntityRenderer(ModEntities.ATTACHMENT.get(), AttachmentRenderer::new);
+        event.registerEntityRenderer(ModEntities.BUCKET_TRUCK.get(), BucketTruckRenderer::new);
+        event.registerEntityRenderer(ModEntities.BUCKET_PLATFORM.get(), BucketPlatformRenderer::new);
     }
 
     private static void registerKeyMappings(RegisterKeyMappingsEvent event) {
@@ -45,6 +53,7 @@ public class JaneMooseClient {
 
     private static void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.TRACTOR_MENU.get(), TractorScreen::new);
+        event.register(ModMenus.BUCKET_TRUCK_MENU.get(), BucketTruckScreen::new);
         event.register(ModMenus.ATTACHMENT_MENU.get(), com.swack.janemoose.gui.AttachmentScreen::new);
         event.register(ModMenus.FERMENTATION_BARREL_MENU.get(), com.swack.janemoose.gui.FermentationBarrelScreen::new);
     }
@@ -52,8 +61,8 @@ public class JaneMooseClient {
     @SubscribeEvent
     public static void onRenderGuiLayerPre(RenderGuiLayerEvent.Pre event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player != null && mc.player.getVehicle() instanceof JaneMooseTractorEntity) {
-            // Hide horse/animal heart rows and jump charge bar when riding tractor
+        if (mc.player != null && (mc.player.getVehicle() instanceof JaneMooseTractorEntity || mc.player.getVehicle() instanceof JaneMooseBucketTruckEntity)) {
+            // Hide horse/animal heart rows and jump charge bar when riding tractor or bucket truck
             if (event.getName().equals(VanillaGuiLayers.VEHICLE_HEALTH) || event.getName().equals(VanillaGuiLayers.CONTEXTUAL_INFO_BAR)) {
                 event.setCanceled(true);
             }

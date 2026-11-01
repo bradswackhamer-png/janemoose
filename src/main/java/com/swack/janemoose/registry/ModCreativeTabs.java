@@ -18,6 +18,7 @@ public class ModCreativeTabs {
                     .icon(() -> new ItemStack(ModItems.TRACTOR.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.TRACTOR.get());
+                        output.accept(ModItems.BUCKET_TRUCK.get());
                         output.accept(ModItems.FERMENTATION_BARREL.get());
                         output.accept(ModItems.DIESEL_CANISTER.get());
                         output.accept(ModItems.ETHANOL_BUCKET.get());

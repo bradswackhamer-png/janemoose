@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg" alt="Minecraft 26.3"/></a>
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/NeoForge-26.3.0.48-orange.svg" alt="NeoForge 26.3"/></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.0.3-blue.svg" alt="Version 1.0.3"/></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.1.0-blue.svg" alt="Version 1.1.0"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT"/></a>
 </p>
 
@@ -19,7 +19,7 @@
 
 ## 📖 Overview
 
-**Jane Moose** brings authentic, heavy-duty American agricultural power to Minecraft with the vintage **Jane Moose Model 4020 Diesel Tractor** and modular 3-point hitch implement attachments. Featuring real-life farming physics, realistic diesel fueling, interactive custom GUIs, 2K photorealistic textures, and full **LabPBR 1.3 Parallax Occlusion Mapping (POM)** shader compatibility!
+**Jane Moose** brings authentic, heavy-duty industrial and agricultural power to Minecraft with the vintage **Jane Moose Model 4020 Diesel Tractor**, modular 3-point hitch implement attachments, and the **Jane Moose GKZ-14 Aerial Bucket / Platform Truck**. Featuring real-life farming physics, 3-speed transmissions, articulating hydraulic aerial booms, realistic diesel & ethanol biofuel systems, interactive custom GUIs, 2K photorealistic textures, and full **LabPBR 1.3 Parallax Occlusion Mapping (POM)** shader compatibility!
 
 ---
 
@@ -32,6 +32,14 @@
 - **Speed Governance**: Operates at 100% transport speed when traveling or unhitched; automatically throttled to 50% working speed when an implement is lowered and actively working.
 - **Dual-Fuel Engine (Diesel & Ethanol Biofuel)**: Internal 10,000 mB fuel reservoir. Refuel via **Diesel Canisters**, **Ethanol Buckets** from the **Refinery** mod (`refinery:ethanol_bucket`), or any compatible fuel item (`#c:diesel`, `#c:fuels/diesel`, `#c:ethanol`, `#c:fuels/ethanol`). Creates a self-sustaining agricultural biofuel loop!
 - **Interactive Dashboard GUI**: Press `[C]` or sneak-right-click to monitor fuel levels, rename your tractor, toggle hydraulics, engage the engine, and switch headlights On/Off.
+
+### 🚛 Jane Moose GKZ-14 Aerial Bucket / Platform Truck
+- **Cab-Over-Engine Utility Truck & Articulated Skyjack Boom**: Modeled after real-world aerial work platform trucks — featuring a white COE cab with tinted windshield and wing mirrors, flatbed utility deck with DOT red-and-white reflective stripes, underbody electrical cabinet, 4 automatic hydraulic outrigger stabilizer legs with amber beacons, rotating turret pedestal, 2-stage articulated boom + inner telescoping fly-boom, and a self-leveling enclosed aerial work bucket.
+- **3-Speed Transmission (`1 m/s`, `2 m/s`, `3 m/s`)**: Press `[G]` while driving (or use the Dashboard GUI) to shift between **Gear 1 (1 m/s)**, **Gear 2 (2 m/s)**, and **Gear 3 (3 m/s)**.
+- **Sit in the Bucket / Platform**:
+  - Right-click the bucket/platform directly (or press `[B]` while riding) to sit inside the aerial bucket at the tip of the boom and perform actions (mine, build, use items, raise/lower boom, and drive at 1/2/3 m/s).
+  - Dismounting (`Left Shift`) while in the bucket places you on the solid walkable bucket platform floor (`JaneMooseBucketPlatformEntity`) in mid-air.
+- **Dedicated Raise & Lower Boom Hotkeys**: Press or hold `[R]` to raise the boom up to ~8m high, `[V]` to lower the boom, and rotate the turntable left/right from the Dashboard GUI.
 
 ### 🌾 3-Point Hitch Attachments & Tiers
 Attachments can be placed directly in the world as 3D entities by right-clicking, then hitched to the tractor's rear drawbar by reversing up to them.
@@ -56,15 +64,19 @@ All keybindings are fully rebindable in the standard Minecraft **Options > Contr
 | Action | Default Key | Context | Description |
 | :--- | :---: | :---: | :--- |
 | **Drive / Steer** | `W / A / S / D` | Riding | Throttle forward/reverse, steer left/right. |
-| **Dismount** | `Left Shift` | Riding | Safely dismount the tractor. |
+| **Dismount** | `Left Shift` | Riding | Safely dismount the vehicle (onto platform if in bucket). |
 | **Toggle Headlights** | `[L]` | Riding / GUI | Turn high-beam torch headlights **ON / OFF**. |
-| **Lift / Lower Hydraulics** | `[H]` or `Space` | Riding / GUI | Switch between **Transport Mode** (Raised) & **Working Mode** (Lowered). |
-| **Toggle Implement Power** | `[X]` | Riding / GUI | Engage / disengage the PTO implement mechanism. |
-| **Open Tractor Dashboard** | `[C]` | Riding / Stand | Access fuel status, rename box, and quick toggles. |
+| **Lift / Lower Hydraulics** | `[H]` or `Space` | Riding Tractor | Switch tractor implement between **Transport** & **Working** mode. |
+| **Toggle Implement Power** | `[X]` | Riding Tractor | Engage / disengage tractor PTO implement mechanism. |
+| **Raise Bucket Truck Boom** | `[R]` | Riding Truck | Raise the Bucket Truck's articulated aerial boom. |
+| **Lower Bucket Truck Boom** | `[V]` | Riding Truck | Lower the Bucket Truck's articulated aerial boom. |
+| **Cycle Bucket Truck Speed** | `[G]` | Riding / GUI | Shift Bucket Truck speed: **1 m/s**, **2 m/s**, **3 m/s**. |
+| **Switch Cab / Bucket Seat** | `[B]` | Riding / GUI | Switch between the Driver Cab seat and Aerial Bucket seat. |
+| **Open Vehicle Dashboard** | `[C]` | Riding / Stand | Access fuel status, rename box, boom controls & toggles. |
 | **Place Implement** | `Right-Click` | Handheld | Deploy 3D implement entity into world. |
 | **Hitch Implement** | Reverse near | Driving | Tractor auto-hitches when backing up to an implement. |
 | **Unhitch Implement** | `Shift + Right-Click` | Outside | Detach hitched implement using an empty hand or wrench. |
-| **Pack Up Tractor** | `Shift + Right-Click` | Outside (Wrench) | Retrieve tractor and attachments into inventory item form. |
+| **Pack Up Vehicle** | `Shift + Right-Click` | Outside (Wrench) | Retrieve tractor, bucket truck, or attachment as item. |
 
 ---
 
@@ -74,12 +86,17 @@ Jane Moose is engineered to look stunning with and without shaders:
 - **Vanilla**: High-contrast, clean 2K baked ambient occlusion textures.
 - **Shaderpacks (Iris, Oculus, Complementary, SEUS, Kappa)**: Full **LabPBR 1.3** specification.
   - Tangent Normal & POM Height Maps (`_n.png`): Tire tread lugs, radiator honeycomb mesh, hood louvers, and diamond plate exhibit real 3D depth.
-  - Decal Preservation: "JANE MOOSE 4020" lettering and stripe decals are clamped to pure height `255` and flat normal `(128, 128, 255)`, guaranteeing crisp, zero-stepping text under parallax raymarching.
+  - Decal Preservation: "JANE MOOSE 4020" and "JANE MOOSE GKZ14" lettering and stripe decals are clamped to pure height `255` and flat normal `(128, 128, 255)`, guaranteeing crisp, zero-stepping text under parallax raymarching.
   - Specular & Roughness Maps (`_s.png`): Distinct metallic reflections on chrome bezels, sheet metal paint gloss, and matte rubber tires.
 
 ---
 
 ## 📋 Changelog Summary
+
+### [v1.1.0] - 2026-11-01
+- **Jane Moose GKZ-14 Bucket / Platform Truck (`janemoose:bucket_truck`)**: Added a rideable aerial work platform / bucket truck with white COE cab, 4 automatic hydraulic outriggers, rotating turret, 2-stage articulated boom + telescopic fly-boom, and self-leveling enclosed aerial bucket.
+- **3-Speed Transmission**: Shift between **1 m/s**, **2 m/s**, and **3 m/s** driving speeds (`[G]` keybind or GUI button).
+- **Dedicated Boom Hotkeys & Dual Seats**: Separate hotkeys for **Raise Boom** (`[R]`) and **Lower Boom** (`[V]`), plus right-clicking the bucket or pressing `[B]` while riding to sit in the Aerial Bucket (`JaneMooseBucketPlatformEntity`) and perform actions at height.
 
 ### [v1.0.3] - 2026-10-25
 - **Realistic Jerry Can (`diesel_canister.png`)**: Handcrafted 32x32 Industrial Machinery Yellow pressed-steel Jerry Can with stamped 3D "X" stiffening ribs, powder-coated triple carry handle, brass cam-lock spout, and black DIESEL hazard banner.
@@ -120,7 +137,7 @@ cd janemoose
 # Build with Gradle
 ./gradlew build --no-daemon
 ```
-The compiled mod JAR will be located in `build/libs/janemoose-1.0.0.jar`.
+The compiled mod JAR will be located in `build/libs/janemoose-1.1.0.jar`.
 
 ---
 
