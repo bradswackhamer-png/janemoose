@@ -2,6 +2,23 @@
 
 All notable changes to the Jane Moose mod will be documented in this file.
 
+## [1.1.1] - 2026-11-04
+
+### Changed
+- **Ethanol Bucket 3D Pixel Art Overhaul (`ethanol_bucket.png`)**:
+  - Replaced the low-resolution 16x16 placeholder bucket icon with a handcrafted 32x32 3D 8-bit pixel art heavy-duty galvanized utility bucket.
+  - Styled with an arched steel bail wire handle, lathe-turned wooden grip, dual corrugation reinforcing ribs, side pivot bracket ears, flared base foot ring, and stamped central biofuel droplet emblem.
+  - Rendered with directional top-left specular highlights and metallic steel shading to match the visual style of the Jerry Can (`diesel_canister.png`), Bucket Truck (`bucket_truck.png`), Wrench (`wrench.png`), and agricultural implements.
+- **Ethanol Fluid Appearance Correction**:
+  - Corrected the coloration of Ethanol Biofuel from inaccurate orange/amber tones to its realistic clear spirit appearance.
+  - Rendered inside the bucket with crystal-clear pale ice-aqua liquid tones, transparent fluid depth, and brilliant specular glare glints.
+
+### Fixed
+- **Fermentation Barrel Screen Fluid Gauge**:
+  - Updated the ethanol tank gauge rendering in `FermentationBarrelScreen` from golden-amber (`0xFFE5A93B` / `0xFFFFCC66`) to crystal-clear pale aqua (`0xFF6DBECF` / `0xFFC6EFF7`), ensuring the GUI gauge accurately reflects pure ethanol.
+
+---
+
 ## [1.1.0] - 2026-11-01
 
 ### Added

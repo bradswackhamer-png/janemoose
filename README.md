@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg" alt="Minecraft 26.3"/></a>
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/NeoForge-26.3.0.48-orange.svg" alt="NeoForge 26.3"/></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.1.0-blue.svg" alt="Version 1.1.0"/></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.1.1-blue.svg" alt="Version 1.1.1"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT"/></a>
 </p>
 
@@ -92,6 +92,10 @@ Jane Moose is engineered to look stunning with and without shaders:
 ---
 
 ## 📋 Changelog Summary
+
+### [v1.1.1] - 2026-11-04
+- **Ethanol Bucket 3D Pixel Art Overhaul (`ethanol_bucket.png`)**: Upgraded the flat 16x16 placeholder icon to a handcrafted 32x32 3D 8-bit pixel art heavy-duty galvanized utility bucket with an arched steel bail handle, wooden grip, dual corrugation ribs, side ears, and stamped biofuel droplet emblem, matching the style of the Jerry Can and machinery icons.
+- **Clear Ethanol Fluid Correction**: Corrected ethanol liquid from orange/yellow to its authentic clear spirit appearance — rendered as crystal-clear, pale ice-aqua liquid with specular glints in both the bucket icon and the Fermentation Barrel GUI tank gauge (`FermentationBarrelScreen`).
 
 ### [v1.1.0] - 2026-11-01
 - **Jane Moose GKZ-14 Bucket / Platform Truck (`janemoose:bucket_truck`)**: Added a rideable aerial work platform / bucket truck with white COE cab, 4 automatic hydraulic outriggers, rotating turret, 2-stage articulated boom + telescopic fly-boom, and self-leveling enclosed aerial bucket.

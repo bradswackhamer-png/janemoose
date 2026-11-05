@@ -77,9 +77,9 @@ public class FermentationBarrelScreen extends AbstractContainerScreen<Fermentati
         if (ethanol > 0 && capacity > 0) {
             int fillH = Math.min(tankH, (int) (((float) ethanol / capacity) * tankH));
             if (fillH > 0) {
-                // Golden-amber Ethanol biofuel fluid
-                extractor.fill(tankX, tankY + tankH - fillH, tankX + tankW, tankY + tankH, 0xFFE5A93B);
-                extractor.fill(tankX + 2, tankY + tankH - fillH, tankX + 6, tankY + tankH, 0xFFFFCC66);
+                // Crystal-clear pale aqua Ethanol biofuel fluid
+                extractor.fill(tankX, tankY + tankH - fillH, tankX + tankW, tankY + tankH, 0xFF6DBECF);
+                extractor.fill(tankX + 2, tankY + tankH - fillH, tankX + 6, tankY + tankH, 0xFFC6EFF7);
             }
         }
 

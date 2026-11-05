@@ -70,7 +70,15 @@ All vehicle and attachment actions are fully rebindable in the standard Minecraf
 
 ---
 
-## 📢 Recent Updates (v1.1.0)
+## 📢 Recent Updates (v1.1.1)
+- **Ethanol Bucket 3D Pixel Art Overhaul (`ethanol_bucket.png`)**:
+  - Upgraded the 16x16 placeholder icon to a handcrafted 32x32 3D 8-bit pixel art heavy-duty galvanized utility bucket with an arched steel wire bail, wooden grip, dual corrugation ribs, side mounting ears, and stamped central biofuel droplet emblem.
+  - Matches the realistic 3D isometric pixel art aesthetic established by the Jerry Can (`diesel_canister.png`), Bucket Truck (`bucket_truck.png`), and implement icons.
+- **Clear Ethanol Fluid Correction**:
+  - Corrected the coloration of Ethanol Biofuel from inaccurate orange/amber to its realistic clear spirit appearance.
+  - Rendered with crystal-clear pale ice-aqua liquid tones and bright specular glints both in the bucket item texture and inside the Fermentation Barrel screen (`FermentationBarrelScreen`) tank gauge.
+
+## 📢 Previous Updates (v1.1.0)
 - **Jane Moose GKZ-14 Aerial Bucket / Platform Truck (`janemoose:bucket_truck`)**:
   - Added a rideable cab-over-engine aerial work platform / bucket truck with 4 automatic hydraulic outriggers, rotating turret, 2-stage articulated boom + telescoping fly-boom, and self-leveling enclosed aerial bucket.
   - **3-Speed Transmission**: Selectable **1 m/s**, **2 m/s**, and **3 m/s** speeds (`[G]` keybind or GUI button).
