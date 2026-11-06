@@ -370,22 +370,34 @@ public class JaneMooseTractorEntity extends LivingEntity implements PlayerRideab
     public static boolean isFuel(ItemStack stack) {
         if (stack.isEmpty()) return false;
         if (stack.getItem() instanceof DieselCanisterItem) return true;
+        if (stack.getItem() instanceof com.swack.janemoose.item.EthanolBucketItem) return true;
+        if (stack.is(ModItems.ETHANOL_BUCKET.get()) || stack.is(ModItems.DIESEL_CANISTER.get())) return true;
         if (stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "diesel"))) ||
             stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "fuels/diesel"))) ||
             stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "ethanol"))) ||
             stack.is(ItemTags.create(Identifier.fromNamespaceAndPath("c", "fuels/ethanol")))) {
             return true;
         }
+        String path = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath().toLowerCase();
         String name = stack.getItem().toString().toLowerCase();
-        return name.contains("diesel") || name.contains("ethanol") || name.contains("biofuel");
+        return path.contains("diesel") || path.contains("ethanol") || path.contains("biofuel")
+                || name.contains("diesel") || name.contains("ethanol") || name.contains("biofuel");
     }
 
     public static ItemStack getEmptyContainer(ItemStack stack) {
-        String name = stack.getItem().toString().toLowerCase();
-        if (stack.is(Items.BUCKET) || name.contains("bucket") || stack.getItem() instanceof net.minecraft.world.item.BucketItem) {
+        if (stack.getItem() instanceof com.swack.janemoose.item.EthanolBucketItem || stack.is(ModItems.ETHANOL_BUCKET.get())) {
             return new ItemStack(Items.BUCKET);
         }
-        if (stack.is(Items.GLASS_BOTTLE) || name.contains("bottle")) {
+        var remainderTemplate = stack.getItem().getCraftingRemainder();
+        if (remainderTemplate != null) {
+            return remainderTemplate.create();
+        }
+        String path = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem()).getPath().toLowerCase();
+        String name = stack.getItem().toString().toLowerCase();
+        if (stack.is(Items.BUCKET) || path.contains("bucket") || name.contains("bucket") || stack.getItem() instanceof net.minecraft.world.item.BucketItem) {
+            return new ItemStack(Items.BUCKET);
+        }
+        if (stack.is(Items.GLASS_BOTTLE) || path.contains("bottle") || name.contains("bottle")) {
             return new ItemStack(Items.GLASS_BOTTLE);
         }
         return ItemStack.EMPTY;

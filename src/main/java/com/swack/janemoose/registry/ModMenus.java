@@ -27,6 +27,12 @@ public class ModMenus {
     public static final DeferredHolder<MenuType<?>, MenuType<BucketTruckMenu>> BUCKET_TRUCK_MENU =
             MENUS.register("bucket_truck_dashboard", () -> IMenuTypeExtension.create(BucketTruckMenu::new));
 
+    public static final DeferredHolder<MenuType<?>, MenuType<com.swack.janemoose.gui.RoadPaverMenu>> ROAD_PAVER_MENU =
+            MENUS.register("road_paver", () -> IMenuTypeExtension.create(com.swack.janemoose.gui.RoadPaverMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<com.swack.janemoose.gui.DieselRoadPaverMenu>> DIESEL_ROAD_PAVER_MENU =
+            MENUS.register("diesel_road_paver", () -> IMenuTypeExtension.create(com.swack.janemoose.gui.DieselRoadPaverMenu::new));
+
     public static final ResourceKey<MenuType<?>> ATTACHMENT_MENU_KEY =
             ResourceKey.create(net.minecraft.core.registries.Registries.MENU, Identifier.fromNamespaceAndPath(JaneMooseMod.MOD_ID, "attachment_inventory"));
 

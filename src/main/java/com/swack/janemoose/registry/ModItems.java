@@ -16,6 +16,12 @@ public class ModItems {
     public static final DeferredItem<BucketTruckItem> BUCKET_TRUCK =
             ITEMS.registerItem("bucket_truck", BucketTruckItem::new, p -> p.stacksTo(1));
 
+    public static final DeferredItem<RoadPaverItem> ROAD_PAVER =
+            ITEMS.registerItem("road_paver", RoadPaverItem::new, p -> p.stacksTo(1));
+
+    public static final DeferredItem<DieselRoadPaverItem> DIESEL_ROAD_PAVER =
+            ITEMS.registerItem("diesel_road_paver", DieselRoadPaverItem::new, p -> p.stacksTo(1));
+
     public static final DeferredItem<DieselCanisterItem> DIESEL_CANISTER =
             ITEMS.registerItem("diesel_canister", DieselCanisterItem::new, p -> p.stacksTo(16));
 

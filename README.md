@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg" alt="Minecraft 26.3"/></a>
   <a href="https://neoforged.net/"><img src="https://img.shields.io/badge/NeoForge-26.3.0.48-orange.svg" alt="NeoForge 26.3"/></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.1.1-blue.svg" alt="Version 1.1.1"/></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Release-v1.2.1-blue.svg" alt="Version 1.2.1"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License MIT"/></a>
 </p>
 
@@ -19,7 +19,7 @@
 
 ## 📖 Overview
 
-**Jane Moose** brings authentic, heavy-duty industrial and agricultural power to Minecraft with the vintage **Jane Moose Model 4020 Diesel Tractor**, modular 3-point hitch implement attachments, and the **Jane Moose GKZ-14 Aerial Bucket / Platform Truck**. Featuring real-life farming physics, 3-speed transmissions, articulating hydraulic aerial booms, realistic diesel & ethanol biofuel systems, interactive custom GUIs, 2K photorealistic textures, and full **LabPBR 1.3 Parallax Occlusion Mapping (POM)** shader compatibility!
+**Jane Moose** brings authentic, heavy-duty industrial and agricultural power to Minecraft with the vintage **Jane Moose Model 4020 Diesel Tractor**, modular 3-point hitch implement attachments, the **Jane Moose GKZ-14 Aerial Bucket / Platform Truck**, and heavy **Road Pavers** (Standard 3x1 and 5x1 Highway Diesel Road Paver). Featuring real-life vehicle physics, road construction systems, 3-speed transmissions, articulating hydraulic aerial booms, realistic diesel & ethanol biofuel systems, interactive custom GUIs, 2K photorealistic textures, and full **LabPBR 1.3 Parallax Occlusion Mapping (POM)** shader compatibility!
 
 ---
 
@@ -40,6 +40,20 @@
   - Right-click the bucket/platform directly (or press `[B]` while riding) to sit inside the aerial bucket at the tip of the boom and perform actions (mine, build, use items, raise/lower boom, and drive at 1/2/3 m/s).
   - Dismounting (`Left Shift`) while in the bucket places you on the solid walkable bucket platform floor (`JaneMooseBucketPlatformEntity`) in mid-air.
 - **Dedicated Raise & Lower Boom Hotkeys**: Press or hold `[R]` to raise the boom up to ~8m high, `[V]` to lower the boom, and rotate the turntable left/right from the Dashboard GUI.
+
+### 🛣️ Heavy Road Pavers (Solo Construction Machinery)
+- **Jane Moose Road Paver (`janemoose:road_paver`)**:
+  - Industrial yellow solo road paver engineered to pave smooth road strips without needing rails or train connections.
+  - **3x1 Paving Swath**: Paves a 3-block wide strip under its heavy rear leveling screed (1.0 m/s in Work Mode, 2.0 m/s in Transport Mode).
+  - **Dashboard GUI & Filter Blocks**: 3 filter pattern slots (Left, Center, Right), 27 bulk material inventory slots, and coal/furnace fuel burner.
+  - **Autonomous Cruise & Steering**: Manual WASD driving or automated cruise with Cardinal Lock (N, S, W, E, or Free).
+  - **Work Light & Alignment Hologram**: Illuminates work sites at night and projects a 3x3 holographic ghost road grid ahead.
+- **Jane Moose 5x1 Diesel Road Paver (`janemoose:diesel_road_paver`)**:
+  - Upgraded highway-class road paver in signature Jane Moose John Deere green livery.
+  - **Diesel & Biofuel Powered**: Runs on Jane Moose's 10,000 mB diesel system (refuel with Diesel Canisters, Ethanol Buckets, or GUI fuel slot).
+  - **5x1 Wide Paving Swath**: Paves a full 5-wide lane strip in a single pass.
+  - **5 Filter Slots GUI**: 5 dedicated pattern filter slots (Far-Left, Mid-Left, Center, Mid-Right, Far-Right) for multi-lane striping and road shoulders, plus 27 material slots and a live diesel gauge.
+  - **5x3 Ghost Hologram Alignment Grid**: 15 holographic outline projection boxes indicating placement paths.
 
 ### 🌾 3-Point Hitch Attachments & Tiers
 Attachments can be placed directly in the world as 3D entities by right-clicking, then hitched to the tractor's rear drawbar by reversing up to them.
@@ -93,6 +107,16 @@ Jane Moose is engineered to look stunning with and without shaders:
 
 ## 📋 Changelog Summary
 
+### [v1.2.1] - 2026-11-06
+- **Ethanol Biofuel Support for 5x1 Road Paver**: Refuel the 5x1 Green Diesel Road Paver with Ethanol Buckets (`janemoose:ethanol_bucket`, `refinery:ethanol_bucket`, `#c:ethanol`) via right-click refueling or dashboard slot. Added an ethanol-based crafting recipe alternative.
+- **Stationary GUI Fuel Draining**: Refueling via GUI slot 5 drains fuel automatically when stationary or moving.
+- **Dashboard & Tooltips Polish**: Updated GUI labels, gauges, and tooltips across diesel machinery to display dual Diesel / Ethanol fuel support.
+
+### [v1.2.0] - 2026-11-05
+- **Heavy Road Paver (`janemoose:road_paver`)**: Adapted from Track and Trains as a solo road-building vehicle with 3x1 paving, 3 pattern filter slots, 27 material storage slots, coal combustion, Cardinal Lock, work lights, and 3x3 ghost hologram.
+- **5x1 Diesel Road Paver (`janemoose:diesel_road_paver`)**: Second road paver version featuring John Deere green livery, 10,000 mB diesel fuel system, extended 5x1 paving screed, 5 filter slots GUI, and 5x3 alignment hologram.
+- **Controls & Hotkeys**: Integrated with `[C]` Dashboard GUI, `[L]` Work Light, and `[X]` Work Mode toggles.
+
 ### [v1.1.1] - 2026-11-04
 - **Ethanol Bucket 3D Pixel Art Overhaul (`ethanol_bucket.png`)**: Upgraded the flat 16x16 placeholder icon to a handcrafted 32x32 3D 8-bit pixel art heavy-duty galvanized utility bucket with an arched steel bail handle, wooden grip, dual corrugation ribs, side ears, and stamped biofuel droplet emblem, matching the style of the Jerry Can and machinery icons.
 - **Clear Ethanol Fluid Correction**: Corrected ethanol liquid from orange/yellow to its authentic clear spirit appearance — rendered as crystal-clear, pale ice-aqua liquid with specular glints in both the bucket icon and the Fermentation Barrel GUI tank gauge (`FermentationBarrelScreen`).
@@ -141,7 +165,7 @@ cd janemoose
 # Build with Gradle
 ./gradlew build --no-daemon
 ```
-The compiled mod JAR will be located in `build/libs/janemoose-1.1.0.jar`.
+The compiled mod JAR will be located in `build/libs/janemoose-1.2.1.jar`.
 
 ---
 

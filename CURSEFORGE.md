@@ -1,8 +1,8 @@
-# 🚜 Jane Moose — Diesel Tractor & Aerial Bucket Truck Mod
+# 🚜 Jane Moose — Diesel Tractor, Bucket Truck & Road Paver Mod
 
 **"Nothing runs like a moose!"**
 
-Jane Moose brings authentic, heavy-duty agricultural and utility power to Minecraft with the vintage **Jane Moose 4020 Diesel Tractor**, modular 3-point hitch implement attachments, and the **Jane Moose GKZ-14 Aerial Bucket / Platform Truck**. Featuring real-life farm mechanics, 3-speed transmissions, articulating aerial work platforms, realistic diesel & ethanol biofuel fueling, interactive custom GUIs, high-definition 2K textures, and full LabPBR Parallax Occlusion Mapping (POM) shader support!
+Jane Moose brings authentic, heavy-duty agricultural, utility, and road construction machinery to Minecraft with the vintage **Jane Moose 4020 Diesel Tractor**, modular 3-point hitch implement attachments, the **Jane Moose GKZ-14 Aerial Bucket / Platform Truck**, and heavy **Road Pavers** (Standard 3x1 and 5x1 Highway Diesel Road Paver). Featuring real-life vehicle mechanics, road paving systems, 3-speed transmissions, articulating aerial work platforms, realistic diesel & ethanol biofuel fueling, interactive custom GUIs, high-definition 2K textures, and full LabPBR Parallax Occlusion Mapping (POM) shader support!
 
 ---
 
@@ -23,6 +23,22 @@ Jane Moose brings authentic, heavy-duty agricultural and utility power to Minecr
   * Right-click the bucket/platform directly or press `[B]` while riding to sit inside the aerial bucket/platform to build, mine, use items, operate the boom (`[R]` / `[V]`), and drive.
   * Dismounting (`Left Shift`) while in the bucket places you on the solid walkable aerial platform floor (`JaneMooseBucketPlatformEntity`) in mid-air!
 * **Dedicated Raise & Lower Boom Hotkeys**: Separate assignable hotkeys for **Raise Boom** (`[R]`) and **Lower Boom** (`[V]`).
+
+---
+
+### 🛣️ Heavy Road Pavers (Solo Construction Machinery)
+* **Jane Moose Road Paver (`janemoose:road_paver`)**:
+  * Industrial yellow heavy crawler paver that works solo without rails, minecarts, or train couplers.
+  * **3x1 Roadbed Paving**: Lays down a 3-block wide road under its rear leveling screed (1.0 m/s in Work Mode, 2.0 m/s in Transport Mode).
+  * **3-Slot Pattern Filter GUI**: 3 filter slots (Left, Center, Right) to specify paving blocks, 27 bulk material slots, and furnace fuel combustion engine.
+  * **Autonomous Cruise & Steering**: WASD driving or automated cruise with Cardinal Lock (N, S, W, E, or Free).
+  * **Work Light & Ghost Alignment Grid**: Front illumination and 3x3 holographic preview grid.
+* **Jane Moose 5x1 Diesel Road Paver (`janemoose:diesel_road_paver`)**:
+  * Second version finished in signature Jane Moose John Deere green livery.
+  * **Diesel & Biofuel Powered**: Powered by Jane Moose's 10,000 mB diesel system (refuel via Diesel Canisters, Ethanol Buckets, or GUI slot).
+  * **5x1 Wide Highway Paving Swath**: Extended heavy screed plate paving 5 blocks wide in a single pass.
+  * **5-Slot Filter GUI**: 5 dedicated filter block slots (Far-Left, Mid-Left, Center, Mid-Right, Far-Right) for multi-lane road design and lane-marking blocks, 27 material storage slots, and live fuel gauge.
+  * **5x3 Ghost Hologram Alignment Grid**: 15 holographic outline projection boxes indicating exact placement ahead of the paver.
 
 ---
 
@@ -70,7 +86,21 @@ All vehicle and attachment actions are fully rebindable in the standard Minecraf
 
 ---
 
-## 📢 Recent Updates (v1.1.1)
+## 📢 Recent Updates (v1.2.1)
+- **Ethanol Biofuel Support for 5x1 Road Paver**:
+  - The 5x1 Green Diesel Road Paver now fully accepts **Ethanol Buckets** (`janemoose:ethanol_bucket`, `refinery:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`) in both in-world right-click fueling and the Dashboard fuel slot.
+  - Added an alternative crafting recipe allowing the 5x1 Paver to be crafted using an Ethanol Bucket in place of a Diesel Canister.
+  - Idle GUI Refueling: Placing fuel containers in Dashboard Slot 5 immediately and automatically drains them into the fuel tank even while standing still.
+  - Polished GUI tooltips and fuel gauge headers to clearly indicate dual Diesel & Ethanol biofuel compatibility.
+
+## 📢 Previous Updates (v1.2.0)
+- **Heavy Road Paver (`janemoose:road_paver`)**:
+  - Adapted from Track and Trains as a solo road-building vehicle with 3x1 paving, 3 pattern filter slots, 27 material storage slots, coal combustion, Cardinal Lock, work lights, and 3x3 ghost hologram.
+- **5x1 Diesel Road Paver (`janemoose:diesel_road_paver`)**:
+  - Second road paver version featuring John Deere green livery, 10,000 mB diesel fuel system, extended 5x1 paving screed, 5 filter slots GUI, and 5x3 alignment hologram.
+- **Controls & Hotkeys**: Integrated with `[C]` Dashboard GUI, `[L]` Work Light, and `[X]` Work Mode toggles.
+
+## 📢 Previous Updates (v1.1.1)
 - **Ethanol Bucket 3D Pixel Art Overhaul (`ethanol_bucket.png`)**:
   - Upgraded the 16x16 placeholder icon to a handcrafted 32x32 3D 8-bit pixel art heavy-duty galvanized utility bucket with an arched steel wire bail, wooden grip, dual corrugation ribs, side mounting ears, and stamped central biofuel droplet emblem.
   - Matches the realistic 3D isometric pixel art aesthetic established by the Jerry Can (`diesel_canister.png`), Bucket Truck (`bucket_truck.png`), and implement icons.

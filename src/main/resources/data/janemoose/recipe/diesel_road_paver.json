@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GGG",
+    "DPR",
+    "IBI"
+  ],
+  "key": {
+    "G": "minecraft:green_wool",
+    "D": "janemoose:diesel_canister",
+    "P": "minecraft:piston",
+    "R": "janemoose:road_paver",
+    "I": "minecraft:iron_block",
+    "B": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "janemoose:diesel_road_paver"
+  }
+}

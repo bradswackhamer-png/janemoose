@@ -19,6 +19,8 @@ public class ModCreativeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.TRACTOR.get());
                         output.accept(ModItems.BUCKET_TRUCK.get());
+                        output.accept(ModItems.ROAD_PAVER.get());
+                        output.accept(ModItems.DIESEL_ROAD_PAVER.get());
                         output.accept(ModItems.FERMENTATION_BARREL.get());
                         output.accept(ModItems.DIESEL_CANISTER.get());
                         output.accept(ModItems.ETHANOL_BUCKET.get());

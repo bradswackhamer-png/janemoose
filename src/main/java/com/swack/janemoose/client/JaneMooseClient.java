@@ -38,6 +38,8 @@ public class JaneMooseClient {
         event.registerLayerDefinition(TractorModel.LAYER_LOCATION, TractorModel::createBodyLayer);
         event.registerLayerDefinition(AttachmentModel.LAYER_LOCATION, AttachmentModel::createBodyLayer);
         event.registerLayerDefinition(BucketTruckModel.LAYER_LOCATION, BucketTruckModel::createBodyLayer);
+        event.registerLayerDefinition(com.swack.janemoose.client.model.RoadPaverModel.ROAD_PAVER_LAYER, () -> com.swack.janemoose.client.model.RoadPaverModel.createBodyLayer(false));
+        event.registerLayerDefinition(com.swack.janemoose.client.model.RoadPaverModel.DIESEL_ROAD_PAVER_LAYER, () -> com.swack.janemoose.client.model.RoadPaverModel.createBodyLayer(true));
     }
 
     private static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -45,6 +47,8 @@ public class JaneMooseClient {
         event.registerEntityRenderer(ModEntities.ATTACHMENT.get(), AttachmentRenderer::new);
         event.registerEntityRenderer(ModEntities.BUCKET_TRUCK.get(), BucketTruckRenderer::new);
         event.registerEntityRenderer(ModEntities.BUCKET_PLATFORM.get(), BucketPlatformRenderer::new);
+        event.registerEntityRenderer(ModEntities.ROAD_PAVER.get(), com.swack.janemoose.client.renderer.RoadPaverRenderer::new);
+        event.registerEntityRenderer(ModEntities.DIESEL_ROAD_PAVER.get(), com.swack.janemoose.client.renderer.DieselRoadPaverRenderer::new);
     }
 
     private static void registerKeyMappings(RegisterKeyMappingsEvent event) {
@@ -56,13 +60,17 @@ public class JaneMooseClient {
         event.register(ModMenus.BUCKET_TRUCK_MENU.get(), BucketTruckScreen::new);
         event.register(ModMenus.ATTACHMENT_MENU.get(), com.swack.janemoose.gui.AttachmentScreen::new);
         event.register(ModMenus.FERMENTATION_BARREL_MENU.get(), com.swack.janemoose.gui.FermentationBarrelScreen::new);
+        event.register(ModMenus.ROAD_PAVER_MENU.get(), com.swack.janemoose.gui.RoadPaverScreen::new);
+        event.register(ModMenus.DIESEL_ROAD_PAVER_MENU.get(), com.swack.janemoose.gui.DieselRoadPaverScreen::new);
     }
 
     @SubscribeEvent
     public static void onRenderGuiLayerPre(RenderGuiLayerEvent.Pre event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player != null && (mc.player.getVehicle() instanceof JaneMooseTractorEntity || mc.player.getVehicle() instanceof JaneMooseBucketTruckEntity)) {
-            // Hide horse/animal heart rows and jump charge bar when riding tractor or bucket truck
+        if (mc.player != null && (mc.player.getVehicle() instanceof JaneMooseTractorEntity
+                || mc.player.getVehicle() instanceof JaneMooseBucketTruckEntity
+                || mc.player.getVehicle() instanceof com.swack.janemoose.entity.BaseRoadPaverEntity)) {
+            // Hide horse/animal heart rows and jump charge bar when riding tractor, bucket truck, or road paver
             if (event.getName().equals(VanillaGuiLayers.VEHICLE_HEALTH) || event.getName().equals(VanillaGuiLayers.CONTEXTUAL_INFO_BAR)) {
                 event.setCanceled(true);
             }

@@ -2,6 +2,8 @@
   "itemGroup.janemoose": "Jane Moose Machinery",
   "item.janemoose.tractor": "Jane Moose Model 4020 Tractor",
   "item.janemoose.bucket_truck": "Jane Moose GKZ-14 Bucket Truck",
+  "item.janemoose.road_paver": "Jane Moose Road Paver",
+  "item.janemoose.diesel_road_paver": "Jane Moose Diesel Road Paver",
   "item.janemoose.diesel_canister": "Diesel Canister",
   "item.janemoose.ethanol_bucket": "Ethanol Bucket",
   "item.janemoose.wrench": "Jane Moose Mechanics Wrench",
@@ -24,6 +26,8 @@
   "entity.janemoose.bucket_truck": "Jane Moose GKZ-14 Bucket Truck",
   "entity.janemoose.bucket_platform": "Jane Moose Aerial Bucket Platform",
   "entity.janemoose.attachment": "Jane Moose Implement",
+  "entity.janemoose.road_paver": "Jane Moose Road Paver",
+  "entity.janemoose.diesel_road_paver": "Jane Moose Diesel Road Paver",
 
   "key.categories.janemoose": "Jane Moose Machinery",
   "key.category.janemoose.machinery": "Jane Moose Machinery",
@@ -38,6 +42,8 @@
 
   "gui.janemoose.tractor_dashboard": "Jane Moose 4020 Dashboard",
   "gui.janemoose.bucket_truck_dashboard": "Jane Moose GKZ-14 Bucket Truck Dashboard",
+  "gui.janemoose.road_paver": "Jane Moose Road Paver",
+  "gui.janemoose.diesel_road_paver": "Jane Moose Diesel Road Paver",
   "gui.janemoose.fermentation_barrel": "Jane Moose Fermentation Barrel",
   "gui.janemoose.seed_hopper": "Jane Moose Seed Hopper",
   "gui.janemoose.grain_tank": "Jane Moose Grain Tank",
@@ -67,8 +73,10 @@
 
   "tooltip.janemoose.tractor": "§aNothing runs like a moose!§r\n§eRideable farm tractor powered by Diesel & Ethanol biofuel.\n§7Press [L] to toggle headlights.\n§7Press [H] to lift/lower hydraulics.\n§7Press [X] to toggle implement On/Off.\n§7Press [C] or sneak-right-click to open Dashboard.",
   "tooltip.janemoose.bucket_truck": "§bJane Moose GKZ-14 Aerial Bucket / Platform Truck§r\n§e3-Speed Transmission:§r §a1 m/s§7, §a2 m/s§7, §a3 m/s§r §7(Press [G] to shift)\n§7Press [R] to raise boom, [V] to lower boom.\n§7Press [B] or right-click bucket to sit in the Aerial Bucket.\n§7Press [L] for headlights, [C] for Dashboard GUI.",
-  "tooltip.janemoose.diesel_canister": "§e1,000 mB of refined diesel fuel.§r\n§7Right-click on a Jane Moose tractor to refuel.",
-  "tooltip.janemoose.ethanol_bucket": "§e1,000 mB of pure Ethanol Biofuel.§r\n§7Right-click on a Jane Moose tractor or insert into Dashboard to refuel.",
+  "tooltip.janemoose.road_paver": "§eHeavy 3x1 Road Paver§r\n§7Paves 3-wide roads with 27-slot material hopper.\n§7Powered by coal & furnace combustion fuel.\n§7Press [C] or sneak-right-click for Dashboard.\n§7Press [L] for Work Light, [X] for Work Mode.",
+  "tooltip.janemoose.diesel_road_paver": "§aHeavy 5x1 Diesel Road Paver§r\n§7Paves wide 5-block highway strips with 5 filter lanes.\n§7Powered by refined Diesel & Ethanol biofuel.\n§7Press [C] or sneak-right-click for Dashboard.\n§7Press [L] for Work Light, [X] for Work Mode.",
+  "tooltip.janemoose.diesel_canister": "§e1,000 mB of refined diesel fuel.§r\n§7Right-click on a Jane Moose vehicle to refuel.",
+  "tooltip.janemoose.ethanol_bucket": "§e1,000 mB of pure Ethanol Biofuel.§r\n§7Right-click on a Jane Moose vehicle or insert into Dashboard to refuel.",
   "tooltip.janemoose.fermentation_barrel": "§aFerments Wheat into Ethanol Biofuel.§r\n§eSlowly produces 1 Bucket (1,000 mB) per 1 real-life minute.\n§7Right-click with empty bucket to extract.\n§7Right-click with empty hand to open GUI.",
   "tooltip.janemoose.wrench": "§eJane Moose Tool§r\n§7Right-click tractor to inspect or open Dashboard.\n§7Sneak-right-click to detach equipment or retrieve the tractor.",
 

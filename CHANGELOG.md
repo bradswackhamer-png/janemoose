@@ -2,6 +2,44 @@
 
 All notable changes to the Jane Moose mod will be documented in this file.
 
+## [1.2.1] - 2026-11-06
+
+### Added
+- **Dedicated Ethanol Biofuel Support for 5x1 Road Paver**:
+  - Explicitly registered support for Ethanol (`janemoose:ethanol_bucket`, `refinery:ethanol_bucket`, `#c:ethanol`, `#c:fuels/ethanol`) across all vehicle fuel checks and refueling interactions.
+  - Added an alternative survival crafting recipe (`diesel_road_paver_from_ethanol.json`) allowing players to craft the 5x1 Paver using an Ethanol Bucket in place of petroleum diesel.
+  - Added live idle GUI fuel draining: fuel items (Ethanol Buckets, Diesel Canisters, Biofuel) placed in Dashboard slot 5 are now automatically drained into the internal 10,000 mB reservoir while stationary as well as moving.
+
+### Changed
+- **Dashboard GUI & Tooltips Polish**:
+  - Updated the fuel slot label and gauge tooltips in `DieselRoadPaverScreen` to explicitly reflect both Diesel and Ethanol fuel compatibility.
+  - Improved container return handling when refueling with Ethanol Buckets, ensuring empty buckets (`minecraft:bucket`) are properly returned to the player or slot.
+
+---
+
+## [1.2.0] - 2026-11-05
+
+### Added
+- **Jane Moose Road Paver (`janemoose:road_paver`)**:
+  - Copied and adapted the Road Paver vehicle from Track and Trains into Jane Moose as a standalone solo road construction vehicle.
+  - Removed all rail and train dependencies: operates smoothly on solid ground without rails, train couplers, or train consist mechanics.
+  - **3x1 Road Paving Swath**: Paves 3-wide road foundations with rear screed leveling plate.
+  - **Dashboard GUI & Filter Blocks**: 3 pattern filter slots (Left, Center, Right), 27 bulk material storage slots, and coal/furnace combustion fuel burner.
+  - **Work & Transport Modes**: Work Mode (1.0 m/s paving speed) and Transport Mode (2.0 m/s travel speed).
+  - **Cardinal Direction Lock**: Center on grid coordinates and lock heading to North, South, East, West, or free steering.
+  - **High-Intensity Work Light & Alignment Hologram**: Front work light illumination (Level 15) and 3x3 holographic projection grid.
+- **Jane Moose 5x1 Diesel Road Paver (`janemoose:diesel_road_paver`)**:
+  - Brand-new second version of the road paver finished in classic Jane Moose John Deere green.
+  - **Diesel & Biofuel Engine**: Replaced coal combustion with Jane Moose's 10,000 mB diesel fuel system; refuelable via Diesel Canisters, Ethanol Buckets, or GUI fuel slot.
+  - **5x1 Highway Paving Swath**: Extended heavy rear screed plate paving 5 blocks wide by 1 block deep.
+  - **Expanded 5-Slot Filter GUI**: 5 dedicated filter block slots (Far-Left, Mid-Left, Center, Mid-Right, Far-Right) for paving customized road shoulders, curbs, and center lines, plus a live diesel fuel gauge and 27 material slots.
+  - **5x3 Alignment Hologram Grid**: 15 holographic outline projection boxes indicating exact placement ahead of the paver.
+- **Controls & Keybinding Integration**:
+  - Full support for Jane Moose keybinds while riding: `[C]` opens Dashboard GUI, `[L]` toggles Work Light, and `[X]` toggles Work Mode.
+  - Mechanic's wrench support: sneak-right-click dismantles vehicle, dropping item and inventory contents.
+
+---
+
 ## [1.1.1] - 2026-11-04
 
 ### Changed

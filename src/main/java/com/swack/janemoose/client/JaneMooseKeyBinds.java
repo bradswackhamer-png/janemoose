@@ -164,6 +164,22 @@ public class JaneMooseKeyBinds {
                         new BucketTruckActionPayload(BucketTruckActionPayload.ACTION_TOGGLE_BUCKET_SEAT, "")
                 ));
             }
+        } else if (mc.player.getVehicle() instanceof com.swack.janemoose.entity.BaseRoadPaverEntity paver) {
+            while (KEY_OPEN_GUI.consumeClick()) {
+                mc.getConnection().send(new ServerboundCustomPayloadPacket(
+                        new com.swack.janemoose.network.RoadPaverActionPayload(paver.getId(), com.swack.janemoose.network.RoadPaverActionPayload.ACTION_OPEN_GUI, "")
+                ));
+            }
+            while (KEY_TOGGLE_LIGHTS.consumeClick()) {
+                mc.getConnection().send(new ServerboundCustomPayloadPacket(
+                        new com.swack.janemoose.network.RoadPaverActionPayload(paver.getId(), com.swack.janemoose.network.RoadPaverActionPayload.ACTION_TOGGLE_LIGHT, "")
+                ));
+            }
+            while (KEY_TOGGLE_ACTIVE.consumeClick()) {
+                mc.getConnection().send(new ServerboundCustomPayloadPacket(
+                        new com.swack.janemoose.network.RoadPaverActionPayload(paver.getId(), com.swack.janemoose.network.RoadPaverActionPayload.ACTION_TOGGLE_WORK_MODE, "")
+                ));
+            }
         }
     }
 }

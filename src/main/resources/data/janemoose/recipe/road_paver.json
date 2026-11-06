@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YBY",
+    "IFI",
+    "ICI"
+  ],
+  "key": {
+    "Y": "minecraft:yellow_wool",
+    "B": "minecraft:iron_block",
+    "F": "minecraft:blast_furnace",
+    "I": "minecraft:iron_ingot",
+    "C": "minecraft:chest"
+  },
+  "result": {
+    "id": "janemoose:road_paver"
+  }
+}

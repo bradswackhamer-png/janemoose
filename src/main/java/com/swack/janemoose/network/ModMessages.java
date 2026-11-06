@@ -18,5 +18,10 @@ public class ModMessages {
                 BucketTruckActionPayload.STREAM_CODEC,
                 BucketTruckActionPayload::handle
         );
+        registrar.playToServer(
+                RoadPaverActionPayload.TYPE,
+                RoadPaverActionPayload.STREAM_CODEC,
+                RoadPaverActionPayload::handle
+        );
     }
 }

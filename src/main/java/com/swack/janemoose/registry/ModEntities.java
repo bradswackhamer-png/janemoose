@@ -57,4 +57,24 @@ public class ModEntities {
                     .clientTrackingRange(10)
                     .updateInterval(1)
                     .build(BUCKET_PLATFORM_KEY));
+
+    public static final ResourceKey<EntityType<?>> ROAD_PAVER_KEY =
+            ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JaneMooseMod.MOD_ID, "road_paver"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<com.swack.janemoose.entity.RoadPaverEntity>> ROAD_PAVER =
+            ENTITIES.register("road_paver", () -> EntityType.Builder.<com.swack.janemoose.entity.RoadPaverEntity>of(com.swack.janemoose.entity.RoadPaverEntity::new, MobCategory.MISC)
+                    .sized(2.8F, 2.0F)
+                    .clientTrackingRange(10)
+                    .updateInterval(3)
+                    .build(ROAD_PAVER_KEY));
+
+    public static final ResourceKey<EntityType<?>> DIESEL_ROAD_PAVER_KEY =
+            ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(JaneMooseMod.MOD_ID, "diesel_road_paver"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<com.swack.janemoose.entity.DieselRoadPaverEntity>> DIESEL_ROAD_PAVER =
+            ENTITIES.register("diesel_road_paver", () -> EntityType.Builder.<com.swack.janemoose.entity.DieselRoadPaverEntity>of(com.swack.janemoose.entity.DieselRoadPaverEntity::new, MobCategory.MISC)
+                    .sized(4.8F, 2.0F)
+                    .clientTrackingRange(10)
+                    .updateInterval(3)
+                    .build(DIESEL_ROAD_PAVER_KEY));
 }
